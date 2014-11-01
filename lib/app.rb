@@ -12,7 +12,7 @@ class JimmysApp < Sinatra::Base
     erb :index
   end
 
-  get 'http://lodojimmys.herokuapp.com/about_us' do
+  get '/about_us' do
     erb :about_us
   end
 
