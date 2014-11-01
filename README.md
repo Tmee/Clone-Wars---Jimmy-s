@@ -1,11 +1,15 @@
-=================Clone Wars=================
-============Jimy's Bar and Grill============
+#*======Clone Wars======*<br>
+##*=====Jimmy's Bar and Grill=====*<br>
+   Module 2 Turing School Software & Design<br>
+      Due Thursday, November 6th 2015
+   
+Created By:<br>
+Timtohy Mee<br>
+Greg Narajka<br>
+Konr Larson
 
 
-Timtohy Mee     Greg Narajka     Konr Larson
 
-
-Module 2 Turing School Software & Design
 
 
 
