@@ -10,4 +10,16 @@ class JimmysApp < Sinatra::Base
   get '/' do
     erb :index
   end
+
+  get '/about-us' do
+  end
+
+  get '/menu' do
+  end
+
+  get '/location' do
+  end
+
+  post '/contact-us' do
+  end
 end
