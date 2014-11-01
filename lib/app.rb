@@ -24,7 +24,7 @@ class JimmysApp < Sinatra::Base
     erb :location
   end
 
-  get '/contact_us' do
+  post '/contact_us' do
     erb :contact_us
   end
 
