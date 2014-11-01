@@ -3,9 +3,14 @@ GEM
   specs:
     backports (3.6.3)
     coderay (1.1.0)
+    mail (2.6.1)
+      mime-types (>= 1.16, < 3)
     method_source (0.8.2)
+    mime-types (2.4.3)
     minitest (5.4.2)
     multi_json (1.10.1)
+    pony (1.11)
+      mail (>= 2.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -34,6 +39,7 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (~> 5.4.2)
+  pony (~> 1.11)
   pry
   rack-test (~> 0.6.2)
   sinatra
