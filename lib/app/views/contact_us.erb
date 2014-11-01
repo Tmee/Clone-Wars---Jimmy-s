@@ -90,47 +90,7 @@ var php_data = {"menu_text":"Go To..."};
 <meta property="og:url" content="http://lodojimmys.com/contact-us/" />
 <meta property="og:description" content="" />
   <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
-    <script type="text/javascript">
-    //<![CDATA[
-    jQuery(document).ready(function($) {
-
-      jQuery('#nice_contact').validate({
-
-        messages: {
-            "name":{"required":"Please enter your name."},
-            "mail":{"required":"Please enter your email address."},
-            "message":{"required":"Please enter a message."}
-        },
-
-        submitHandler: function(form) {
-
-          var str = jQuery('#nice_contact').serialize();
-
-          jQuery.ajax({
-            type: "POST",
-            url: "http://lodojimmys.com/wp-admin/admin-ajax.php",
-            data: 'action=nice_contact_form&nonce=eed4448fed&' + str,
-            success: function(msg) {
-              jQuery("#node").ajaxComplete(function(event, request, settings){
-                  if( msg == 'sent' ) {
-                    jQuery(".nice-contact-form #node").hide();
-                    jQuery(".nice-contact-form #success").fadeIn("slow");
-                    jQuery("#nice_contact input[type=text], #nice_contact textarea").val("");
-                  }else {
-                    result = msg;
-                    jQuery(".nice-contact-form #node").html(result);
-                    jQuery(".nice-contact-form #node").fadeIn("slow");
-                  }
-              });
-            }
-          });
-          return false;
-          form.submit();
-        }
-      });
-    });
-    //]]>
-    </script>
+    // <script type="text/javascript">
       <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Gudea:400,700,400italic' rel='stylesheet' type='text/css'>
 
@@ -217,7 +177,7 @@ Denver, CO 80202 <br />
           <div id="node"></div>
           <div id="success">Thank you for leaving a message.</div>
 
-          <form name="nice_contact" id="nice_contact" method="post" >
+          <form name="nice_contact" id="nice_contact" action="/contact_us" method="post" >
           <p>
             <label for="name" form="nice_contact">Your Name<span class="required">*</span></label>
             <input type="text" id="name" name="name" value="" class="required" />
