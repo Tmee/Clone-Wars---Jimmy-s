@@ -1,6 +1,7 @@
 require 'bundler'
 Bundler.require
 
+
 class JimmysApp < Sinatra::Base
   register Sinatra::Reloader
   set :method_override, true
