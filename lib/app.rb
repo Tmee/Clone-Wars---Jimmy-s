@@ -29,14 +29,12 @@ class JimmysApp < Sinatra::Base
   end
 
   post '/contact_us' do
-    name = params[:name]
-    subject = params[:subject] || ""
-    email = params[:mail]
-    message = params[:message]
+    mail_info = { name: params[:name],
+                  subject: params[:subject] || "(no subject)",
+                  email: params[:mail],
+                  message: params[:message],
+                }
 
-    Pony.mail(:to => 'gregnar@gmail.com',
-              :from => email,
-              :subject => subject,
-              :body => message)
+    Mailer.send_mail(mail_info)
   end
 end
