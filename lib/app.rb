@@ -34,7 +34,7 @@ class JimmysApp < Sinatra::Base
     email = params[:mail]
     message = params[:message]
 
-    Pony.mail(:to => 'gregnar@gmail.com',
+    Pony.mail(:to => 'larsonkonr@gmail.com',
               :from => email,
               :subject => subject,
               :body => message)
