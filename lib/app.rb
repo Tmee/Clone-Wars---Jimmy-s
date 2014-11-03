@@ -60,12 +60,5 @@ class JimmysApp < Sinatra::Base
        :domain               => "http://lodojimmys.herokuapp.com/"
        }
     })
-    redirect '/success'
-   end
-
-
-   get('/success') do
-      @notification = "Thanks for your email. I'll be in touch soon."
-      erb :index, :layout => :layout
    end
 end
