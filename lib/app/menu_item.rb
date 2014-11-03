@@ -11,10 +11,6 @@ class MenuItem
   def self.all
   end
 
-  def database
-    @database ||= YAML::Store.new "ideabox"
-  end
-
   def save
   database.transaction do |db|
     db['menu_items'] ||= []

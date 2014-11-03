@@ -5,5 +5,6 @@ require 'app'
 require 'sinatra/base'
 require 'sinatra/reloader'
 require './lib/app'
+require 'yaml/store'
 
 run JimmysApp
