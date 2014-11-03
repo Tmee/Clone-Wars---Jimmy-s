@@ -1,0 +1,6 @@
+---
+menu_items:
+- :url_id: pizza-pie
+  :name: Pizza Pie
+  :price: '10'
+  :description: a pizza pie with cheese

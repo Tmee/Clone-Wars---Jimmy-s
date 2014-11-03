@@ -8,16 +8,4 @@ class MenuItem
     description = data[:description]
   end
 
-  def self.all
-  end
-
-  def save
-  database.transaction do |db|
-    db['menu_items'] ||= []
-    db['menu_items'] << { url_id: url_id,
-                          name: name,
-                          price: price,
-                          description: description
-                        }
-  end
 end
