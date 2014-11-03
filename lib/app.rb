@@ -34,9 +34,20 @@ class JimmysApp < Sinatra::Base
     email = params[:mail]
     message = params[:message]
 
-    Pony.mail(:to => 'larsonkonr@gmail.com',
+    Pony.mail({
+              :to => 'larsonkonr@gmail.com',
               :from => email,
               :subject => subject,
-              :body => message)
+              :body => message,
+              :via => :smtp,
+              :via_options => {
+                :address        => 'smtp.yourserver.com',
+                :port           => '25',
+                :user_name      => 'user',
+                :password       => 'password',
+                :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
+                :domain         => "localhost.localdomain" # the HELO domain provided by the client to the server
+              }
+      })
   end
 end
