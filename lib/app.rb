@@ -28,26 +28,44 @@ class JimmysApp < Sinatra::Base
     erb :contact_us
   end
 
-  post '/contact_us' do
-    name = params[:name]
-    subject = params[:subject] || ""
-    email = params[:mail]
-    message = params[:message]
+  # post '/contact_us' do
+  #   name = params[:name]
+  #   subject = params[:subject] || ""
+  #   email = params[:mail]
+  #   message = params[:message]
+  #
+  #   Pony.mail(:to => 'larsonkonr@gmail.com',
+  #             :from => email,
+  #             :subject => subject,
+  #             :body => message)
+  # end
 
-    Pony.mail({
-              :to => 'larsonkonr@gmail.com',
-              :from => email,
-              :subject => subject,
-              :body => message,
-              :via => :smtp,
-              :via_options => {
-                :address        => 'smtp.yourserver.com',
-                :port           => '25',
-                :user_name      => 'user',
-                :password       => 'password',
-                :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
-                :domain         => "localhost.localdomain" # the HELO domain provided by the client to the server
-              }
-      })
-  end
+
+
+  post '/contact' do
+  require 'pony'
+  Pony.mail({
+  :from => params[:name],
+      :to => 'larsonkonr@gmail.com',
+      :subject => params[:name] + "has contacted you via the Website",
+      :body => params[:message],
+      :via => :smtp,
+      :via_options => {
+       :address              => 'smtp.gmail.com',
+       :port                 => '587',
+       :enable_starttls_auto => true,
+       :user_name            => 'larsonkonr@gmail.com',
+       :password             => '9am380y1',
+       :authentication       => :plain,
+       :domain               => "http://lodojimmys.herokuapp.com/"
+       }
+    })
+    redirect '/success'
+   end
+
+
+   get('/success') do
+      @notification = "Thanks for your email. I'll be in touch soon."
+      erb :index, :layout => :layout
+   end
 end
