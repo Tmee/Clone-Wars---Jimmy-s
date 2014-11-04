@@ -79,6 +79,16 @@
   background-image: url('../images/fancybox_sprite.png');
 }
 
+.fixed {
+  position: fixed;
+  height: auto;
+  top: 0;
+  width: auto;
+  background: #fff;
+  color: #333333;
+}
+
+
 #fancybox-loading {
   position: fixed;
   top: 50%;

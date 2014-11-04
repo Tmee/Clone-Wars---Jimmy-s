@@ -39,11 +39,28 @@ class JimmysApp < Sinatra::Base
     erb :admin
   end
 
+  get '/reserve' do
+    erb :reservation
+  end
+
+  # post '/contact_us' do
+  #   name = params[:name]
+  #   subject = params[:subject] || ""
+  #   email = params[:mail]
+  #   message = params[:message]
+  #
+  #   Pony.mail(:to => 'larsonkonr@gmail.com',
+  #             :from => email,
+  #             :subject => subject,
+  #             :body => message)
+  # end
+
   post '/contact_us' do
     name = params[:name]
     subject = params[:subject] || ""
     email = params[:mail]
     message = params[:message]
+
 
     require 'pony'
     Pony.mail({
