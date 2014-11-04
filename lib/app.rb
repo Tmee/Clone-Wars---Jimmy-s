@@ -60,27 +60,34 @@ class JimmysApp < Sinatra::Base
     subject = params[:subject] || ""
     email = params[:mail]
     message = params[:message]
+  end
 
 
-    require 'pony'
-    Pony.mail({
-        :to => 'larsonkonr@gmail.com',
-        :from => email,
-        :subject => subject,
-        :body => message,
-        :via => :smtp,
-        :via_options => {
-         :address              => 'smtp.gmail.com',
-         :port                 => '587',
-         :enable_starttls_auto => true,
-         :user_name            => 'thisisafake@gmail.com',
-         :password             => 'fakepassword',
-         :authentication       => :plain,
-         :domain               => "http://lodojimmys.herokuapp.com/"
-         }
-      })
-      redirect '/'
-   end
+  post '/contact_us_reserve' do
+    nothing
+  end
+
+
+
+   #  require 'pony'
+   #  Pony.mail({
+   #      :to => 'larsonkonr@gmail.com',
+   #      :from => email,
+   #      :subject => subject,
+   #      :body => message,
+   #      :via => :smtp,
+   #      :via_options => {
+   #       :address              => 'smtp.gmail.com',
+   #       :port                 => '587',
+   #       :enable_starttls_auto => true,
+   #       :user_name            => 'thisisafake@gmail.com',
+   #       :password             => 'fakepassword',
+   #       :authentication       => :plain,
+   #       :domain               => "http://lodojimmys.herokuapp.com/"
+   #       }
+   #    })
+   #    redirect '/'
+   # end
 
   def protected!
     return if authorized?
@@ -94,3 +101,4 @@ class JimmysApp < Sinatra::Base
     @auth.credentials && @auth.credentials == ['admin', 'admin']
   end
 end
+

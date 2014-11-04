@@ -121,7 +121,7 @@ return true;
               <span id="lblSelectText">Select Date, Time, Party Size </span>
             </p>
             <p id="SearchControl">
-<form>
+<form name="nice_contact" id="nice_contact" action="/contact_us_reserve" method="post">
   <div>
   <div id="SearchNav_divSearchBoxes" class="SimpleSearchWrapper">
     <div id="divDatePickerWrapper" class="SimpleSearchDatePickerWrapper">
@@ -137,9 +137,8 @@ return true;
       <!-- Deliberately NOT initializing the resource key for the validator,
       since we want to control it, its in the resource but string is parameterized.
       If you are re-generating resources for this page, ensure that you strip resource information from this control -->
-      <span id="SearchNav_OTDateSearch_valDateChecker" style="color:Red;display:none;"></span>
-      <span id="SearchNav_OTDateSearch_valDateTimeCheck" style="color:Red;display:none;"></span>
-      <div id="cal1" class="imgCal" style="display:normal;">
+
+      <label for="name" form="nice_contact">Your Name<span class="required">*</span></label>
       <select name="SearchNav$OTDateSearch$cboHourList" id="SearchNav_OTDateSearch_cboHourList" class="DatePickerControlHourDropDown genericSelect" onfocus="killAllCalendars();" onchange="return ValidateDateTime()">
               <option value="1">1__</option>
               <option value="2">2__</option>
@@ -259,55 +258,55 @@ return true;
         <option value="11:00 PM">11:00 PM</option>
         <option value="11:30 PM">11:30 PM</option>
 
-      </select>
-          </div>
-  </div>
-  <input type="hidden" name="SearchNav$OTDateSearch$hidDtVal" id="SearchNav_OTDateSearch_hidDtVal" value="11/04/2014" />
-  <input type="hidden" name="SearchNav$OTDateSearch$hdnDefTimeval" id="SearchNav_OTDateSearch_hdnDefTimeval" value="7:00 PM" />
-
-
-    </div>
-    <div id="divPartySize" class="SimpleSearchPartySizeWrapper">
-      <span id="SearchNav_lblPartySizeLabel" class="SimpleSearchPartySizeLabel">Party Size</span><br class="labelbr" />
-      <div class="FieldContainer">
-        <select name="SearchNav$cboPartySize" id="SearchNav_cboPartySize" class="SimpleSearchPartySize">
-          <option value="1">1 person</option>
-          <option selected="selected" value="2">2 people</option>
-          <option value="3">3 people</option>
-          <option value="4">4 people</option>
-          <option value="5">5 people</option>
-          <option value="6">6 people</option>
-          <option value="7">7 people</option>
-          <option value="8">8 people</option>
-          <option value="9">9 people</option>
-          <option value="10">10 people</option>
-          <option value="11">11 people</option>
-          <option value="12">12 people</option>
-          <option value="13">13 people</option>
-          <option value="14">14 people</option>
-          <option value="15">15 people</option>
-          <option value="16">16 people</option>
-          <option value="17">17 people</option>
-          <option value="18">18 people</option>
-          <option value="19">19 people</option>
-          <option value="20">20 people</option>
-
-          </select>
+            </select>
+                </div>
         </div>
-      </div>
+        <input type="hidden" name="SearchNav$OTDateSearch$hidDtVal" id="SearchNav_OTDateSearch_hidDtVal" value="11/04/2014" />
+        <input type="hidden" name="SearchNav$OTDateSearch$hdnDefTimeval" id="SearchNav_OTDateSearch_hdnDefTimeval" value="7:00 PM" />
+
+
+        </div>
+        <div id="divPartySize" class="SimpleSearchPartySizeWrapper">
+          <span id="SearchNav_lblPartySizeLabel" class="SimpleSearchPartySizeLabel">Party Size</span><br class="labelbr" />
+          <div class="FieldContainer">
+            <select name="SearchNav$cboPartySize" id="SearchNav_cboPartySize" class="SimpleSearchPartySize">
+              <option value="1">1 person</option>
+              <option selected="selected" value="2">2 people</option>
+              <option value="3">3 people</option>
+              <option value="4">4 people</option>
+              <option value="5">5 people</option>
+              <option value="6">6 people</option>
+              <option value="7">7 people</option>
+              <option value="8">8 people</option>
+              <option value="9">9 people</option>
+              <option value="10">10 people</option>
+              <option value="11">11 people</option>
+              <option value="12">12 people</option>
+              <option value="13">13 people</option>
+              <option value="14">14 people</option>
+              <option value="15">15 people</option>
+              <option value="16">16 people</option>
+              <option value="17">17 people</option>
+              <option value="18">18 people</option>
+              <option value="19">19 people</option>
+              <option value="20">20 people</option>
+
+              </select>
+            </div>
+          </div>
 
           <p>
             <label for="mail" form="nice_contact">Your E-Mail<span class="required">*</span></label>
             <input type="text" name="mail" id="mail" value="" class="required email" />
           </p>
 
-        </form><br/>
 
       </div>
 
     <div id="SearchNav_divFindTable" class="SimpleSearchFindTableWrapper">
-      <input type="submit" value="Reserve a Table" onclick= >
+      <input type="submit" value="Reserve a Table">
           </div>
+        </form><br/>
   </div>
     <div id="SearchNav_divValidationError" class="ValidationError">
       <div id="SearchNav_vsErrorSummary" class="NavSearchErrorSummary" style="color:Red;display:none;">
