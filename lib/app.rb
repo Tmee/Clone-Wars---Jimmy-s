@@ -7,6 +7,12 @@ class JimmysApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
 
+  helpers do
+    def home_page
+      '/'
+    end
+  end
+
 
   get '/' do
     erb :index
@@ -17,7 +23,7 @@ class JimmysApp < Sinatra::Base
   end
 
   get '/menu' do
-    erb :menu
+    erb :menu, layout: false
   end
 
   get '/location' do
@@ -29,12 +35,8 @@ class JimmysApp < Sinatra::Base
   end
 
   get '/admin' do
+    protected!
     erb :admin
-  end
-
-  post '/admin' do
-    puts "Thank you for logging in"
-    redirect '/'
   end
 
   post '/contact_us' do
@@ -54,12 +56,24 @@ class JimmysApp < Sinatra::Base
          :address              => 'smtp.gmail.com',
          :port                 => '587',
          :enable_starttls_auto => true,
-         :user_name            => 'larsonkonr@gmail.com',
-         :password             => '9am380y1',
+         :user_name            => 'thisisafake@gmail.com',
+         :password             => 'fakepassword',
          :authentication       => :plain,
          :domain               => "http://lodojimmys.herokuapp.com/"
          }
       })
       redirect '/'
    end
+
+  def protected!
+    return if authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n"
+  end
+
+  def authorized?
+    @auth ||= Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? && @auth.basic? &&
+    @auth.credentials && @auth.credentials == ['admin', 'admin']
+  end
 end
