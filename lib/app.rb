@@ -23,7 +23,7 @@ class JimmysApp < Sinatra::Base
   end
 
   get '/menu' do
-    erb :menu, layout: false
+    erb :menu, layout: :menu_layout
   end
 
   get '/location' do
