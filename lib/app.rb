@@ -45,6 +45,15 @@ class JimmysApp < Sinatra::Base
     nothing
   end
 
+  get '/admin/menu' do
+
+  end
+
+  post '/admin' do
+    protected!
+    "Thanks for all the changes!  I most likely will do nothing with them!"
+  end
+
 
 
 
