@@ -7,12 +7,6 @@ class JimmysApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
 
-  helpers do
-    def home_page
-      '/'
-    end
-  end
-
 
   get '/' do
     erb :index
@@ -23,7 +17,7 @@ class JimmysApp < Sinatra::Base
   end
 
   get '/menu' do
-    erb :menu, layout: :menu_layout
+    erb :menu
   end
 
   get '/location' do
@@ -39,28 +33,11 @@ class JimmysApp < Sinatra::Base
     erb :admin
   end
 
-  get '/reserve' do
-    erb :reservation
-  end
-
-  # post '/contact_us' do
-  #   name = params[:name]
-  #   subject = params[:subject] || ""
-  #   email = params[:mail]
-  #   message = params[:message]
-  #
-  #   Pony.mail(:to => 'larsonkonr@gmail.com',
-  #             :from => email,
-  #             :subject => subject,
-  #             :body => message)
-  # end
-
   post '/contact_us' do
     name = params[:name]
     subject = params[:subject] || ""
     email = params[:mail]
     message = params[:message]
-
 
     require 'pony'
     Pony.mail({
@@ -73,13 +50,12 @@ class JimmysApp < Sinatra::Base
          :address              => 'smtp.gmail.com',
          :port                 => '587',
          :enable_starttls_auto => true,
-         :user_name            => 'thisisafake@gmail.com',
-         :password             => 'fakepassword',
+         :user_name            => 'larsonkonr@gmail.com',
+         :password             => '9am380y1',
          :authentication       => :plain,
          :domain               => "http://lodojimmys.herokuapp.com/"
          }
       })
-      redirect '/'
    end
 
   def protected!
