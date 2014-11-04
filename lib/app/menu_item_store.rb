@@ -43,7 +43,7 @@ class MenuItemStore
     erb_items.map do |item|
       items.insert(:name => item.css('div').first.css('span a').text,
                    :price => item.css('div').first.css('span.price').text,
-                   :description => item.css('div.description').text
+                   :description => item.css('div.description').text.gsub('\n', '')
                    )
     end
   end
