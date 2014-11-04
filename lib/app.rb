@@ -7,6 +7,12 @@ class JimmysApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
 
+  helpers do
+    def home_page
+      '/'
+    end
+  end
+
 
   get '/' do
     erb :index
@@ -17,7 +23,7 @@ class JimmysApp < Sinatra::Base
   end
 
   get '/menu' do
-    erb :menu
+    erb :menu, layout: false
   end
 
   get '/location' do
@@ -29,6 +35,7 @@ class JimmysApp < Sinatra::Base
   end
 
   get '/admin' do
+    protected!
     erb :admin
   end
 
@@ -48,25 +55,42 @@ class JimmysApp < Sinatra::Base
   #             :body => message)
   # end
 
+  post '/contact_us' do
+    name = params[:name]
+    subject = params[:subject] || ""
+    email = params[:mail]
+    message = params[:message]
 
 
-  post '/contact' do
-  require 'pony'
-  Pony.mail({
-  :from => params[:name],
-      :to => 'larsonkonr@gmail.com',
-      :subject => params[:name] + "has contacted you via the Website",
-      :body => params[:message],
-      :via => :smtp,
-      :via_options => {
-       :address              => 'smtp.gmail.com',
-       :port                 => '587',
-       :enable_starttls_auto => true,
-       :user_name            => 'larsonkonr@gmail.com',
-       :password             => '9am380y1',
-       :authentication       => :plain,
-       :domain               => "http://lodojimmys.herokuapp.com/"
-       }
-    })
+    require 'pony'
+    Pony.mail({
+        :to => 'larsonkonr@gmail.com',
+        :from => email,
+        :subject => subject,
+        :body => message,
+        :via => :smtp,
+        :via_options => {
+         :address              => 'smtp.gmail.com',
+         :port                 => '587',
+         :enable_starttls_auto => true,
+         :user_name            => 'thisisafake@gmail.com',
+         :password             => 'fakepassword',
+         :authentication       => :plain,
+         :domain               => "http://lodojimmys.herokuapp.com/"
+         }
+      })
+      redirect '/'
    end
+
+  def protected!
+    return if authorized?
+    headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+    halt 401, "Not authorized\n"
+  end
+
+  def authorized?
+    @auth ||= Rack::Auth::Basic::Request.new(request.env)
+    @auth.provided? && @auth.basic? &&
+    @auth.credentials && @auth.credentials == ['admin', 'admin']
+  end
 end
