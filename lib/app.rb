@@ -48,45 +48,28 @@ class JimmysApp < Sinatra::Base
 
 
 
-   #  require 'pony'
-   #  Pony.mail({
-   #      :to => 'larsonkonr@gmail.com',
-   #      :from => email,
-   #      :subject => subject,
-   #      :body => message,
-   #      :via => :smtp,
-   #      :via_options => {
-   #       :address              => 'smtp.gmail.com',
-   #       :port                 => '587',
-   #       :enable_starttls_auto => true,
-   #       :user_name            => 'thisisafake@gmail.com',
-   #       :password             => 'fakepassword',
-   #       :authentication       => :plain,
-   #       :domain               => "http://lodojimmys.herokuapp.com/"
-   #       }
-   #    })
-   #    redirect '/'
-   # end
+    # require 'pony'
+    # Pony.mail({
+    #     :to => 'larsonkonr@gmail.com',
+    #     :from => email,
+    #     :subject => subject,
+    #     :body => message,
+    #     :via => :smtp,
+    #     :via_options => {
+    #      :address              => 'smtp.gmail.com',
+    #      :port                 => '587',
+    #      :enable_starttls_auto => true,
+    #      :user_name            => 'thisisafake@gmail.com',
+    #      :password             => 'fakepassword',
+    #      :authentication       => :plain,
+    #      :domain               => "http://lodojimmys.herokuapp.com/"
+    #      }
+    #   })
+    #   redirect '/'
+    # end
 
-    require 'pony'
-    Pony.mail({
-        :to => 'larsonkonr@gmail.com',
-        :from => email,
-        :subject => subject,
-        :body => message,
-        :via => :smtp,
-        :via_options => {
-         :address              => 'smtp.gmail.com',
-         :port                 => '587',
-         :enable_starttls_auto => true,
-         :user_name            => 'larsonkonr@gmail.com',
-         :password             => '9am380y1',
-         :authentication       => :plain,
-         :domain               => "http://lodojimmys.herokuapp.com/"
-         }
-      })
-      redirect '/'
-   end
+
+
 
   def protected!
     return if authorized?
