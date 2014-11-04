@@ -4,20 +4,42 @@ require 'nokogiri'
 class MenuItemStore
   attr_reader :database
   attr_reader :scrape_for_items
+  def self.all
+    menu_items = []
+    raw_menu_items.each_with_index do |data, i|
+      menu_items << MenuItem.new(data)
+    end
+    menu_items
+  end
+
+  def self.raw_ideas
+    database.transaction do |db|
+      db['menu_items'] || []
+    end
+  end
 
   def self.database
-    # db = Sequel.sqlite 'db/menu_items.sqlite3'
-    db = Sequel.postgres('d8mr4qm3tinvhh',
-      :user => 'gswvukupvdmxcu',
-      :password => 'zJb4a_RudTaS4brpfbEorW87dx',
-      :host => 'ec2-54-83-201-96.compute-1.amazonaws.com')
+    db = if ENV["RACK_ENV"] == "production"
+          Sequel.postgres('d8mr4qm3tinvhh',
+            :user => 'gswvukupvdmxcu',
+            :password => 'zJb4a_RudTaS4brpfbEorW87dx',
+            :host => 'ec2-54-83-201-96.compute-1.amazonaws.com')
+    else
+      Sequel.sqlite 'db/menu_items.sqlite3'
+    end
     db.create_table? :menu_items do
       primary_key :id
       String      :name,        :size => 255
-      Price       :price,       :size => 4
-      String      :description, :size => 511
+      String      :price,       :size => 255
+      String      :description, :text => true
     end
     db
+  end
+
+  def self.create(data)
+    database.transaction do
+      database['menu_items'] << data
+    end
   end
 
   def self.scrape_for_items
