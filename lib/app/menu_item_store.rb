@@ -40,20 +40,22 @@ class MenuDatabase
     end
   end
 
-  def self.scrape_for_menu_items
-    items = database.from(:menu_items)
-    erb_items = menu_page.css('li#dumb')
+  def self.scrape_for_menu_categories
+    categories_table       = database.from(:menu_categories)
+    categories             = menu_page.css('h2')
+    descriptions           = menu_page.css('p').map(&:text)
+    organized_descriptions = categories.zip(descriptions).to_h
 
-    erb_items.map do |item|
-      items.insert(:name => item.css('div').first.css('span a').text,
-                   :price => item.css('div').first.css('span.price').text,
-                   :description => item.css('div.description').text.gsub('\n', '')
-                   )
+    categories.map do |category|
+      categories_table.insert(:name  => category.text,
+                              :title => category["name"],
+                              :notes => organized_descriptions[category]
+                              )
     end
   end
 
-  def self.scrape_for_menu_categories
-    categories= database.from(:menu_categories)
+  def self.scrape_for_menu_items
+    items     = database.from(:menu_items)
     erb_items = menu_page.css('li#dumb')
 
     erb_items.map do |item|
