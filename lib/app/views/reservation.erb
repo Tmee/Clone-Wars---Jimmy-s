@@ -117,12 +117,12 @@ return true;
         <div id="searchModuleWrapper">
           <div id="SearchModule">
             <p id="SelectText">
-              <span id="lblSearch">Book a table</span>
+              <span id="lblSearch">To book a table</span>
               <span id="lblSelectText">Select Date, Time, Party Size </span>
             </p>
             <p id="SearchControl">
-
-<div>
+<form>
+  <div>
   <div id="SearchNav_divSearchBoxes" class="SimpleSearchWrapper">
     <div id="divDatePickerWrapper" class="SimpleSearchDatePickerWrapper">
 
@@ -130,19 +130,79 @@ return true;
     <span id="SearchNav_OTDateSearch_lblDateLabel" class="DatePickerControlDateEditLabel SearchLabel">Date</span>
     <br class="labelbr hideBR" />
 
-    <div class="FieldContainer">
-      <input name="SearchNav$OTDateSearch$theOTDate" type="text" value="11/04/2014" maxlength="20" readonly="readonly" id="SearchNav_OTDateSearch_theOTDate" class="DatePickerControlDateEdit" onchange="setField(this,null,this.value,&#39;reso&#39;);writeCalendarFor(this, &#39;cal1&#39;);" onfocus="setField(this,null,this.value,&#39;reso&#39;);writeCalendarFor(this, &#39;cal1&#39;);" name="theOTDate" />
-    </div>
+
+
+
 
       <!-- Deliberately NOT initializing the resource key for the validator,
       since we want to control it, its in the resource but string is parameterized.
       If you are re-generating resources for this page, ensure that you strip resource information from this control -->
       <span id="SearchNav_OTDateSearch_valDateChecker" style="color:Red;display:none;"></span>
       <span id="SearchNav_OTDateSearch_valDateTimeCheck" style="color:Red;display:none;"></span>
-      <div id="cal1" class="imgCal" style="display:none;"></div><iframe id="cal1Shim" class="imgCal" style="display:none;" scrolling="no" frameborder="0" src="/blank.html"></iframe>
+      <div id="cal1" class="imgCal" style="display:normal;">
+      <select name="SearchNav$OTDateSearch$cboHourList" id="SearchNav_OTDateSearch_cboHourList" class="DatePickerControlHourDropDown genericSelect" onfocus="killAllCalendars();" onchange="return ValidateDateTime()">
+              <option value="1">1__</option>
+              <option value="2">2__</option>
+              <option value="3">3__</option>
+              <option value="4">4__</option>
+              <option value="5">5__</option>
+              <option value="6">6__</option>
+              <option value="7">7__</option>
+              <option value="8">8__</option>
+              <option value="9">9__</option>
+              <option value="10">10___</option>
+              <option value="11">11___</option>
+              <option value="12">12___</option>
+            </select>
+      <select name="SearchNav$OTDateSearch$cboHourList" id="SearchNav_OTDateSearch_cboHourList" class="DatePickerControlHourDropDown genericSelect" onfocus="killAllCalendars();" onchange="return ValidateDateTime()">
+              <option value="1">1___</option>
+              <option value="2">2___</option>
+              <option value="3">3___</option>
+              <option value="4">4___</option>
+              <option value="5">5___</option>
+              <option value="6">6___</option>
+              <option value="7">7___</option>
+              <option value="8">8___</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+              </select>
+       <select name="SearchNav$OTDateSearch$cboHourList" id="SearchNav_OTDateSearch_cboHourList" class="DatePickerControlHourDropDown genericSelect" onfocus="killAllCalendars();" onchange="return ValidateDateTime()">
+              <option value="2014">2014</option>
+              <option value="2015">2015</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              </select>
+
+
+      </div>
+
 
     <p id="pFormatParagraph" class="DatePickerControlFormatParagraph">
-      <span id="SearchNav_OTDateSearch_lblDisplayDate" class="DatePickerControlDateFormat">mm/dd/yyyy</span>
+      <span id="SearchNav_OTDateSearch_lblDisplayDate" class="DatePickerControlDateFormat">mm  /  dd  /  yyyy</span>
     </p>
   </div>
   <div id="divHourPart" class="SearchTime">
@@ -150,57 +210,57 @@ return true;
     <br class="labelbr hideBR" />
     <div class="FieldContainer genericSelectWrapper">
       <select name="SearchNav$OTDateSearch$cboHourList" id="SearchNav_OTDateSearch_cboHourList" class="DatePickerControlHourDropDown genericSelect" onfocus="killAllCalendars();" onchange="return ValidateDateTime()">
-  <option value="12:00 AM">12:00 AM</option>
-  <option value="12:30 AM">12:30 AM</option>
-  <option value="1:00 AM">1:00 AM</option>
-  <option value="1:30 AM">1:30 AM</option>
-  <option value="2:00 AM">2:00 AM</option>
-  <option value="2:30 AM">2:30 AM</option>
-  <option value="3:00 AM">3:00 AM</option>
-  <option value="3:30 AM">3:30 AM</option>
-  <option value="4:00 AM">4:00 AM</option>
-  <option value="4:30 AM">4:30 AM</option>
-  <option value="5:00 AM">5:00 AM</option>
-  <option value="5:30 AM">5:30 AM</option>
-  <option value="6:00 AM">6:00 AM</option>
-  <option value="6:30 AM">6:30 AM</option>
-  <option value="7:00 AM">7:00 AM</option>
-  <option value="7:30 AM">7:30 AM</option>
-  <option value="8:00 AM">8:00 AM</option>
-  <option value="8:30 AM">8:30 AM</option>
-  <option value="9:00 AM">9:00 AM</option>
-  <option value="9:30 AM">9:30 AM</option>
-  <option value="10:00 AM">10:00 AM</option>
-  <option value="10:30 AM">10:30 AM</option>
-  <option value="11:00 AM">11:00 AM</option>
-  <option value="11:30 AM">11:30 AM</option>
-  <option value="12:00 PM">12:00 PM</option>
-  <option value="12:30 PM">12:30 PM</option>
-  <option value="1:00 PM">1:00 PM</option>
-  <option value="1:30 PM">1:30 PM</option>
-  <option value="2:00 PM">2:00 PM</option>
-  <option value="2:30 PM">2:30 PM</option>
-  <option value="3:00 PM">3:00 PM</option>
-  <option value="3:30 PM">3:30 PM</option>
-  <option value="4:00 PM">4:00 PM</option>
-  <option value="4:30 PM">4:30 PM</option>
-  <option value="5:00 PM">5:00 PM</option>
-  <option value="5:30 PM">5:30 PM</option>
-  <option value="6:00 PM">6:00 PM</option>
-  <option value="6:30 PM">6:30 PM</option>
-  <option selected="selected" value="7:00 PM">7:00 PM</option>
-  <option value="7:30 PM">7:30 PM</option>
-  <option value="8:00 PM">8:00 PM</option>
-  <option value="8:30 PM">8:30 PM</option>
-  <option value="9:00 PM">9:00 PM</option>
-  <option value="9:30 PM">9:30 PM</option>
-  <option value="10:00 PM">10:00 PM</option>
-  <option value="10:30 PM">10:30 PM</option>
-  <option value="11:00 PM">11:00 PM</option>
-  <option value="11:30 PM">11:30 PM</option>
+        <option value="12:00 AM">12:00 AM</option>
+        <option value="12:30 AM">12:30 AM</option>
+        <option value="1:00 AM">1:00 AM</option>
+        <option value="1:30 AM">1:30 AM</option>
+        <option value="2:00 AM">2:00 AM</option>
+        <option value="2:30 AM">2:30 AM</option>
+        <option value="3:00 AM">3:00 AM</option>
+        <option value="3:30 AM">3:30 AM</option>
+        <option value="4:00 AM">4:00 AM</option>
+        <option value="4:30 AM">4:30 AM</option>
+        <option value="5:00 AM">5:00 AM</option>
+        <option value="5:30 AM">5:30 AM</option>
+        <option value="6:00 AM">6:00 AM</option>
+        <option value="6:30 AM">6:30 AM</option>
+        <option value="7:00 AM">7:00 AM</option>
+        <option value="7:30 AM">7:30 AM</option>
+        <option value="8:00 AM">8:00 AM</option>
+        <option value="8:30 AM">8:30 AM</option>
+        <option value="9:00 AM">9:00 AM</option>
+        <option value="9:30 AM">9:30 AM</option>
+        <option value="10:00 AM">10:00 AM</option>
+        <option value="10:30 AM">10:30 AM</option>
+        <option value="11:00 AM">11:00 AM</option>
+        <option value="11:30 AM">11:30 AM</option>
+        <option value="12:00 PM">12:00 PM</option>
+        <option value="12:30 PM">12:30 PM</option>
+        <option value="1:00 PM">1:00 PM</option>
+        <option value="1:30 PM">1:30 PM</option>
+        <option value="2:00 PM">2:00 PM</option>
+        <option value="2:30 PM">2:30 PM</option>
+        <option value="3:00 PM">3:00 PM</option>
+        <option value="3:30 PM">3:30 PM</option>
+        <option value="4:00 PM">4:00 PM</option>
+        <option value="4:30 PM">4:30 PM</option>
+        <option value="5:00 PM">5:00 PM</option>
+        <option value="5:30 PM">5:30 PM</option>
+        <option value="6:00 PM">6:00 PM</option>
+        <option value="6:30 PM">6:30 PM</option>
+        <option selected="selected" value="7:00 PM">7:00 PM</option>
+        <option value="7:30 PM">7:30 PM</option>
+        <option value="8:00 PM">8:00 PM</option>
+        <option value="8:30 PM">8:30 PM</option>
+        <option value="9:00 PM">9:00 PM</option>
+        <option value="9:30 PM">9:30 PM</option>
+        <option value="10:00 PM">10:00 PM</option>
+        <option value="10:30 PM">10:30 PM</option>
+        <option value="11:00 PM">11:00 PM</option>
+        <option value="11:30 PM">11:30 PM</option>
 
-</select>
-    </div>
+      </select>
+          </div>
   </div>
   <input type="hidden" name="SearchNav$OTDateSearch$hidDtVal" id="SearchNav_OTDateSearch_hidDtVal" value="11/04/2014" />
   <input type="hidden" name="SearchNav$OTDateSearch$hdnDefTimeval" id="SearchNav_OTDateSearch_hdnDefTimeval" value="7:00 PM" />
@@ -211,33 +271,43 @@ return true;
       <span id="SearchNav_lblPartySizeLabel" class="SimpleSearchPartySizeLabel">Party Size</span><br class="labelbr" />
       <div class="FieldContainer">
         <select name="SearchNav$cboPartySize" id="SearchNav_cboPartySize" class="SimpleSearchPartySize">
-  <option value="1">1 person</option>
-  <option selected="selected" value="2">2 people</option>
-  <option value="3">3 people</option>
-  <option value="4">4 people</option>
-  <option value="5">5 people</option>
-  <option value="6">6 people</option>
-  <option value="7">7 people</option>
-  <option value="8">8 people</option>
-  <option value="9">9 people</option>
-  <option value="10">10 people</option>
-  <option value="11">11 people</option>
-  <option value="12">12 people</option>
-  <option value="13">13 people</option>
-  <option value="14">14 people</option>
-  <option value="15">15 people</option>
-  <option value="16">16 people</option>
-  <option value="17">17 people</option>
-  <option value="18">18 people</option>
-  <option value="19">19 people</option>
-  <option value="20">20 people</option>
+          <option value="1">1 person</option>
+          <option selected="selected" value="2">2 people</option>
+          <option value="3">3 people</option>
+          <option value="4">4 people</option>
+          <option value="5">5 people</option>
+          <option value="6">6 people</option>
+          <option value="7">7 people</option>
+          <option value="8">8 people</option>
+          <option value="9">9 people</option>
+          <option value="10">10 people</option>
+          <option value="11">11 people</option>
+          <option value="12">12 people</option>
+          <option value="13">13 people</option>
+          <option value="14">14 people</option>
+          <option value="15">15 people</option>
+          <option value="16">16 people</option>
+          <option value="17">17 people</option>
+          <option value="18">18 people</option>
+          <option value="19">19 people</option>
+          <option value="20">20 people</option>
 
-</select>
+          </select>
+        </div>
       </div>
-    </div>
+
+          <p>
+            <label for="mail" form="nice_contact">Your E-Mail<span class="required">*</span></label>
+            <input type="text" name="mail" id="mail" value="" class="required email" />
+          </p>
+
+        </form><br/>
+
+      </div>
+
     <div id="SearchNav_divFindTable" class="SimpleSearchFindTableWrapper">
-      <input type="submit" name="SearchNav$btnFindTable" value="Find a Table" onclick=<a href="https://github.com/Tmee/Clone-Wars---Jimmy-s"></a>
-    </div>
+      <input type="submit" value="Reserve a Table" onclick= >
+          </div>
   </div>
     <div id="SearchNav_divValidationError" class="ValidationError">
       <div id="SearchNav_vsErrorSummary" class="NavSearchErrorSummary" style="color:Red;display:none;">
@@ -382,13 +452,7 @@ if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+
 <!-- End SiteCatalyst code version: H.22.1. -->
 
 
-
-
-
 <input id="CurrentOTPage" type="hidden" value="single" />
-
-
-
 
 
 <div id="BotNav_pnlBrightTag">
@@ -402,15 +466,7 @@ if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+
             s.parentNode.insertBefore(tagjs, s);
         }());
     </script>
-    <noscript>
-    <iframe src="//s.thebrighttag.com/iframe?c=d0upCKz" width="1" height="1"
-    frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-    </noscript>
-
 </div>
-
-
-
 
 <script type="text/javascript">
 //<![CDATA[
