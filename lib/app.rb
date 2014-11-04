@@ -7,12 +7,6 @@ class JimmysApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
 
-  helpers do
-    def home_page
-      '/'
-    end
-  end
-
 
   get '/' do
     erb :index
@@ -39,6 +33,9 @@ class JimmysApp < Sinatra::Base
     erb :admin
   end
 
+  get '/admin/menu' do
+  end
+
   post '/contact_us' do
     name = params[:name]
     subject = params[:subject] || ""
@@ -50,14 +47,14 @@ class JimmysApp < Sinatra::Base
         :to => 'larsonkonr@gmail.com',
         :from => email,
         :subject => subject,
-        :body => message,
+        :body => name + " says " + message,
         :via => :smtp,
         :via_options => {
          :address              => 'smtp.gmail.com',
          :port                 => '587',
          :enable_starttls_auto => true,
-         :user_name            => 'thisisafake@gmail.com',
-         :password             => 'fakepassword',
+         :user_name            => 'larsonkonr@gmail.com',
+         :password             => '9am380y1',
          :authentication       => :plain,
          :domain               => "http://lodojimmys.herokuapp.com/"
          }
