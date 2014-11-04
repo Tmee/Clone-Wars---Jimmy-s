@@ -17,7 +17,7 @@ class JimmysApp < Sinatra::Base
   end
 
   get '/menu' do
-    erb :menu
+    erb :menu, layout: :menu_layout
   end
 
   get '/location' do
@@ -44,7 +44,7 @@ class JimmysApp < Sinatra::Base
         :to => 'larsonkonr@gmail.com',
         :from => email,
         :subject => subject,
-        :body => message,
+        :body => name + " says " + message,
         :via => :smtp,
         :via_options => {
          :address              => 'smtp.gmail.com',
