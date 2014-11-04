@@ -27,8 +27,8 @@ class MenuItemStore
     db.create_table? :menu_items do
       primary_key :id
       String      :name,        :size => 255
-      Price       :price,       :size => 4
-      String      :description, :size => 511
+      String      :price,       :size => 255
+      String      :description, :text => true
     end
     db
   end
