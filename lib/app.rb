@@ -60,5 +60,6 @@ class JimmysApp < Sinatra::Base
          :domain               => "http://lodojimmys.herokuapp.com/"
          }
       })
+      redirect '/'
    end
 end
