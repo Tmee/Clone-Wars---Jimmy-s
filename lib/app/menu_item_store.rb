@@ -1,6 +1,9 @@
 require 'sequel'
+require 'nokogiri'
+
 class MenuItemStore
   attr_reader :database
+  attr_reader :scrape_for_items
   def self.all
     menu_items = []
     raw_menu_items.each_with_index do |data, i|
@@ -16,16 +19,14 @@ class MenuItemStore
   end
 
   def self.database
-    @database = Sequel.sqlite 'db/menu_items.sqlite3'
-    database.create_table? :menu_items do
+    db = Sequel.sqlite 'db/menu_items.sqlite3'
+    db.create_table? :menu_items do
       primary_key :id
-      String      :url_id,      :size => 255
       String      :name,        :size => 255
       Price       :price,       :size => 4
       String      :description, :size => 511
-      String      :category_id, :size => 31
     end
-    @database
+    db
   end
 
   def self.create(data)
@@ -33,26 +34,18 @@ class MenuItemStore
       database['menu_items'] << data
     end
   end
-end
 
   def self.scrape_for_items
     page = Nokogiri::HTML(open("lib/app/views/menu.erb"))
-    items = database
+    items = database.from(:menu_items)
     erb_items = page.css('li#dumb')
+
     erb_items.map do |item|
-    items.insert( :name => item.css('div').first.css('span a').text,
-                  :price => item.css('div').first.css('span.price').text,
-                  :description => item.first.css('div.description').text
-                 )
+      items.insert(:name => item.css('div').first.css('span a').text,
+                   :price => item.css('div').first.css('span.price').text,
+                   :description => item.css('div.description').text
+                   )
+    end
   end
 
-items.insert(:name => "Greek Nachos", :price => 8, :description => "House made pita chips, hummus, gyro meat drizzled with red pepper aioli and raita sauce.", :category_id => "category-item-3")
-items.insert(:name => "Hot Wings", :price => 0, :description => "Choose one of our &#8220;Award Winning&#8221; sauces: BBQ, Original, Chipotle, Sriracha, Spicy BBQ or Melagueta.", :category_id => "category-item-3")
-items.insert(:name => "", :price => 0, :description => "", :category_id => "category-item-3")
-items.insert(:name => "", :price => 0, :description => "", :category_id => "category-item-3")
-items.insert(:name => "", :price => 0, :description => "", :category_id => "category-item-3")
-items.insert(:name => "", :price => 0, :description => "", :category_id => "category-item-3")
-items.insert(:name => "", :price => 0, :description => "", :category_id => "category-item-3")
-items.insert(:name => "", :price => 0, :description => "", :category_id => "category-item-3")
-items.insert(:name => "", :price => 0, :description => "", :category_id => "category-item-3")
-items.insert(:name => "", :price => 0, :description => "", :category_id => "category-item-3")
+end
