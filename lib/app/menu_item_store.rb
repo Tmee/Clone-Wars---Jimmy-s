@@ -4,19 +4,6 @@ require 'nokogiri'
 class MenuItemStore
   attr_reader :database
   attr_reader :scrape_for_items
-  def self.all
-    menu_items = []
-    raw_menu_items.each_with_index do |data, i|
-      menu_items << MenuItem.new(data)
-    end
-    menu_items
-  end
-
-  def self.raw_ideas
-    database.transaction do |db|
-      db['menu_items'] || []
-    end
-  end
 
   def self.database
     db = Sequel.sqlite 'db/menu_items.sqlite3'
@@ -27,12 +14,6 @@ class MenuItemStore
       String      :description, :size => 511
     end
     db
-  end
-
-  def self.create(data)
-    database.transaction do
-      database['menu_items'] << data
-    end
   end
 
   def self.scrape_for_items
