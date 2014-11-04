@@ -111,7 +111,10 @@ textarea {
 	border: 1px solid #fff;
 }
 
+
+
 .hidden { display: none; }
+
 
 .clear {
 	clear: both;
@@ -277,6 +280,16 @@ only screen and (min-resolution: 144dpi) {
 /*-----------------------------------------------------------------------------------*/
 /*	3.	Navigation 																	 */
 /*-----------------------------------------------------------------------------------*/
+
+.wrapper_fixed {
+	position: fixed;
+  height: auto;
+  bottom: 0;
+  left:	0;
+  width: auto;
+	background: #fff;
+	color: #333333;
+}
 
 .backtotop{
 	bottom: -30px;

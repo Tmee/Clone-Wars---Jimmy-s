@@ -32,6 +32,10 @@ class JimmysApp < Sinatra::Base
     erb :admin
   end
 
+  get '/reserve' do
+    erb :reservation
+  end
+
   # post '/contact_us' do
   #   name = params[:name]
   #   subject = params[:subject] || ""
