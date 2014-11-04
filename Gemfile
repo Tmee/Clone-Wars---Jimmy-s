@@ -8,4 +8,11 @@ gem 'rack-test', '~> 0.6.2'
 gem 'pony', '~> 1.11'
 gem 'sequel', '~> 4.16.0'
 gem 'nokogiri'
-gem 'pg'
+
+group :development do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+end

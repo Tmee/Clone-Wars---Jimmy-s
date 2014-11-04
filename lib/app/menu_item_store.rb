@@ -19,11 +19,14 @@ class MenuItemStore
   end
 
   def self.database
-    # db = Sequel.sqlite 'db/menu_items.sqlite3'
-    db = Sequel.postgres('d8mr4qm3tinvhh',
-      :user => 'gswvukupvdmxcu',
-      :password => 'zJb4a_RudTaS4brpfbEorW87dx',
-      :host => 'ec2-54-83-201-96.compute-1.amazonaws.com')
+    db = if ENV["RACK_ENV"] == "production"
+          Sequel.postgres('d8mr4qm3tinvhh',
+            :user => 'gswvukupvdmxcu',
+            :password => 'zJb4a_RudTaS4brpfbEorW87dx',
+            :host => 'ec2-54-83-201-96.compute-1.amazonaws.com')
+    else
+      Sequel.sqlite 'db/menu_items.sqlite3'
+    end
     db.create_table? :menu_items do
       primary_key :id
       String      :name,        :size => 255
