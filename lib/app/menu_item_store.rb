@@ -6,6 +6,12 @@ class MenuItemStore
   attr_reader :scrape_for_items
 
   def self.database
+
+  # DB = Sequel.postgres('mydatabase.db',:user=>'postgres',:password=>'my_password_here',:host=>'localhost',:port=>5432,:max_connections=>10)
+  # DB.create_table :mytable do
+  #   primary_key :id
+  #   String :column_name
+  # end
     db = Sequel.sqlite 'db/menu_items.sqlite3'
     db.create_table? :menu_items do
       primary_key :id
