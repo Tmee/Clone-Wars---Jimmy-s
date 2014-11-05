@@ -49,8 +49,8 @@ class JimmysApp < Sinatra::Base
   end
 
   get '/admin/menu' do
-    menu_categories = MenuCategories.all_menu_items
-    menu_items = MenuDatabase.all_menu_items
+    menu_categories = MenuDatabase.all_menu_categories
+    menu_items      = MenuDatabase.all_menu_items
     erb :admin_menu, locals: { menu_items: menu_items, menu_categories: menu_categories }, layout: :admin_layout
   end
 
