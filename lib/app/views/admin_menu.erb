@@ -9,9 +9,9 @@
           <h3><%= item.title %></h3>
 
           <form method="POST" action="/admin/<=% item.id %>">
-            <input type="hidden" name="_method" value="PUT"/>
             <textarea class='textarea_short'><%= item.title %></textarea><br/>
-            <input type="button" value='Save' class="edit_button"/>
+            <input type="hidden" name="_method" value="PUT"/>
+            <input type="submit" value='Save' class="edit_button"/>
           </form>
           <%end%>
         </li>
