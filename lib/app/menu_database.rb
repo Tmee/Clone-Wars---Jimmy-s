@@ -57,7 +57,6 @@ class MenuDatabase
   def self.scrape_for_menu_items
     items     = database.from(:menu_items)
     erb_items = menu_page.css('li#dumb')
-
     erb_items.map do |item|
       items.insert(:name => item.css('div').first.css('span a').text,
                    :price => item.css('div').first.css('span.price').text,
@@ -69,4 +68,6 @@ class MenuDatabase
   def self.menu_page
     Nokogiri::HTML(open("lib/app/views/menu.erb"))
   end
+
+  def self.determine_category_id()
 end
