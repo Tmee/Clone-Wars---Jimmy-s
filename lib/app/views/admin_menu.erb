@@ -3,33 +3,40 @@
     <div>
       <h2>Item Categories</h2><br/>
       <ul>
-          <li>menu_items.each do |item|</li>
-          <li>item.category</li>
-        <form method="get" action="/menu">
-          <input type="button" value='Edit' class="edit_button"/>
-        </form>
+        <li>
+          <p>menu_items.each do |item|</p>
+
+          <form method="POST" action="/<=% item.id %>">
+            <textarea class='textarea_short'>item.name</textarea><br/>
+            <input type="button" value='Save' class="edit_button"/>
+          </form><br/>
+        </li>
       </ul>
+
+
     <div>
       <h2>Menu Items</h2><br/>
       <ul>
-          <li>
-            <p>
-             menu_items.each do |item|
-            </p>
+        <li>
+          <p>
+           menu_items.each do |item|
+          </p>
 
-            <form action='/<=% menu_item.id %>' method="POST">
-              <textarea class="textarea_short_and_long">item.title</textarea><br/>
-              <input type='submit' value='Save' class='edit_button'>
-              <input type="hidden" name="_method" value="DELETE">
-              <input type="button" value="DELETE" class="edit_button"/>
-            </form>
+          <form action='/<=% menu_item.id %>' method="POST">
+            <textarea class="textarea_short">item.title</textarea><br/>
+            <input type="button" value='Save' class="edit_button"/>
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="button" value="DELETE" class="edit_button"/>
+          </form>
 
-            <form action='/<=% menu_item.id %>' method="POST">
-              <textarea class="textarea_big">item.description</textarea><br/>
-              <input type='submit' value='Save' class='edit_button'>
-              <input type="hidden" name="_method" value="DELETE">
-              <input type="button" value="DELETE" class="edit_button"/>
-            </form>
+          <form action='/<=% menu_item.id %>' method="POST">
+            <textarea class="textarea_short_and_tall">item.description</textarea><br/>
+            <input type="button" value='Save' class="edit_button"/>
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="button" value="DELETE" class="edit_button"/>
+          </form>
+        </li>
+      </ul>
 
 
 
