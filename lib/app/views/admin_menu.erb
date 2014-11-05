@@ -4,12 +4,13 @@
       <h2>Item Categories</h2><br/>
       <ul>
         <li>
-          <p>menu_items.each do |item|</p>
+          <p><% menu_items.each do |item| %></p>
 
           <form method="POST" action="/<=% item.id %>">
-            <textarea class='textarea_short'>item.name</textarea><br/>
+            <textarea class='textarea_short'><%= item.name %></textarea><br/>
             <input type="button" value='Save' class="edit_button"/>
           </form><br/>
+          <%end%>
         </li>
       </ul>
     </div>
@@ -20,11 +21,11 @@
     <ul>
       <li>
         <p>
-         menu_items.each do |item|
+         <% menu_items.each do |item| %>
         </p>
 
         <form action='/<=% menu_item.id %>' method="POST">
-          <textarea class="textarea_short">item.title</textarea><br/>
+          <textarea class="textarea_short">item.name</textarea><br/>
           <input type="button" value='Save' class="edit_button"/>
           <input type="hidden" name="_method" value="DELETE">
           <input type="button" value="DELETE" class="edit_button"/>
@@ -36,6 +37,7 @@
           <input type="hidden" name="_method" value="DELETE">
           <input type="button" value="DELETE" class="edit_button"/>
         </form>
+        <%end%>
       </li>
     </ul>
   </div>
