@@ -51,8 +51,9 @@ class MenuDatabase
   def self.create_menu_category_table(db)
     db.create_table? :menu_categories do
       primary_key :id
-      String      :name,  :size => 255
-      String      :notes,  :text => true
+      String      :name,    :size => 255
+      String      :notes,   :text => true
+      String      :sidebar, :size => 255
     end
   end
 
@@ -64,7 +65,8 @@ class MenuDatabase
 
     categories.map do |category|
       categories_table.insert(:name  => category.text,
-                              :notes => organized_descriptions[category]
+                              :notes => organized_descriptions[category],
+                              :sidebar => category["name"]
                               )
     end
   end
@@ -82,7 +84,7 @@ class MenuDatabase
   end
 
   def self.menu_page
-    Nokogiri::HTML(open("lib/app/views/menu.erb"))
+    Nokogiri::HTML(open("db/backup_db/backup_menu_view.erb"))
   end
 
   def self.all_menu_items

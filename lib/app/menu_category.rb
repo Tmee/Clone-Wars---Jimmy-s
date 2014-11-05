@@ -1,10 +1,11 @@
 class MenuCategory
-  attr_reader :id, :title, :notes
+  attr_reader :id, :title, :notes, :name
 
   def initialize(data, database)
     @id         = data[:id]
     @title      = data[:name]
     @notes      = data[:notes]
+    @name       = data[:name]
     @database   = database
   end
 
