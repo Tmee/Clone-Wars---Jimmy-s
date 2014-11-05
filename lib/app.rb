@@ -66,6 +66,12 @@ class JimmysApp < Sinatra::Base
   # ====== Admin Edit / Save / Delete ====== #
 
   #menu editing
+
+  post '/' do
+    MenuDatabase.create(params[:id])
+    redirect '/admin/menu'
+  end
+
   get '/:url_id/edit' do |id|
     id = MenuDatabase.find(id)
     erb :admin_edit, locals: {url_id: id}

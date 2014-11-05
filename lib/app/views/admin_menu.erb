@@ -12,12 +12,20 @@
     <div>
       <h2>Menu Items</h2><br/>
       <ul>
-        <p>
-         menu_items.each do |item|
-        </p>
           <li>
-              Item Name<br/>
-              Item Description<br/>
+            <p>
+             menu_items.each do |item|
+            </p>
+
+            <form action='/<=% menu_item.id %>' method="POST">
+              <textarea class="textarea_small">item.title</textarea><br/>
+              <input type='submit' value='Save'>
+            </form>
+
+            <form action='/<=% menu_item.id %>' method="POST">
+              <textarea class="textarea_small">item.description</textarea><br/>
+              <input type='submit' value='Save'>
+            </form>
 
             <table class="table_fix">
               <tbody>
