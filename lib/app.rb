@@ -72,13 +72,13 @@ class JimmysApp < Sinatra::Base
 
   #menu editing
 
-  put '/admin/:id' do
+  post '/admin/:id' do
     MenuDatabase.update(params[:id])
     redirect '/admin/menu'
   end
 
-  delete '/:id' do |id|
-    MenuDatabase.delete(id.to_i)
+  delete '/admin/:id' do |id|
+    MenuDatabase.delete(id)
     redirect '/admin/menu'
   end
 
