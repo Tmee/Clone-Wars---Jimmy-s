@@ -1,5 +1,7 @@
 require 'sequel'
 require 'nokogiri'
+require './lib/app/menu_category'
+require './lib/app/menu_item'
 
 class MenuDatabase
   attr_reader :database
@@ -28,6 +30,7 @@ class MenuDatabase
      String      :name,        :size => 255
      String      :price,       :size => 255
      String      :description, :text => true
+     Integer     :category_id, :size => 255
     end
   end
 
@@ -60,7 +63,8 @@ class MenuDatabase
     erb_items.map do |item|
       items.insert(:name => item.css('div').first.css('span a').text,
                    :price => item.css('div').first.css('span.price').text,
-                   :description => item.css('div.description').text.gsub('\n', '')
+                   :description => item.css('div.description').text.gsub('\n', ''),
+                   :category_id => item["category-id"]
                    )
     end
   end
@@ -69,5 +73,14 @@ class MenuDatabase
     Nokogiri::HTML(open("lib/app/views/menu.erb"))
   end
 
-  def self.determine_category_id()
+  def self.all_menu_items
+    items = database.from(:menu_items).select.to_a
+    items.map {|item| MenuItem.new(item)}
+  end
+
+  def self.all_menu_categories
+    categories = database.from(:menu_categories).select.to_a
+    categories.map {|category| MenuCategory.new(category)}
+  end
+
 end

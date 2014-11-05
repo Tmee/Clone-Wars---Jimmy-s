@@ -1,11 +1,16 @@
 class MenuItem
-  attr_reader :url_id, :name, :price, :description
+  attr_reader :id,
+              :name,
+              :price,
+              :description,
+              :category_id
 
   def initialize (data)
-    url_id      = data[:url_id]
+    id          = data[:id]
     name        = data[:name]
     price       = data[:price]
     description = data[:description]
+    category_id = data[:category_id]
   end
 
 end
