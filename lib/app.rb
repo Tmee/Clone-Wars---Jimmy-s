@@ -32,13 +32,11 @@ class JimmysApp < Sinatra::Base
     erb :contact_us
   end
 
+  # ========== Admin Areas ========== #
+
   get '/admin' do
     protected!
     erb :admin, layout: :admin_layout
-  end
-
-  get '/admin/menu' do
-    erb :admin_menu, layout: :admin_layout
   end
 
   get '/admin/home' do
@@ -47,6 +45,10 @@ class JimmysApp < Sinatra::Base
 
   get '/admin/about_us' do
     erb :admin_about_us, layout: :admin_layout
+  end
+
+  get '/admin/menu' do
+    erb :admin_menu, layout: :admin_layout
   end
 
   get '/admin/location' do
@@ -61,6 +63,19 @@ class JimmysApp < Sinatra::Base
     respond
   end
 
+  # ====== Admin Edit / Save / Delete ====== #
+
+  #menu editing
+  get '/:url_id/edit' do |id|
+    id = MenuDatabase.find(id)
+    erb :admin_edit, locals: {url_id: id}
+  end
+
+  delete '/:id' do |id|
+    MenuDatabase.delete(id.to_i)
+    redirect '/admin/menu'
+  end
+
   post '/1/about_us' do
     respond
   end
@@ -68,6 +83,9 @@ class JimmysApp < Sinatra::Base
   post '/2/about_us' do
     respond
   end
+
+
+# ======== End Admin ======== #
 
   post '/contact_us' do
     name = params[:name]
