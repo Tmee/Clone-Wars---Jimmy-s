@@ -19,10 +19,11 @@ class MenuItem
 
   def to_h
   {
-    "title" => title,
+    "name" => name,
     "description" => description,
     "price" => price,
-    "url_id" => url_id
+    "id" => id,
+    "category_id" => category_id
   }
   end
 

@@ -1,5 +1,6 @@
 require 'bundler'
 Bundler.require
+require_relative './app/menu_database'
 
 
 class JimmysApp < Sinatra::Base
@@ -48,7 +49,8 @@ class JimmysApp < Sinatra::Base
   end
 
   get '/admin/menu' do
-    erb :admin_menu, layout: :admin_layout
+    menu_items = MenuDatabase.all_menu_items
+    erb :admin_menu, locals: { menu_items: menu_items }, layout: :admin_layout
   end
 
   get '/admin/location' do
