@@ -18,35 +18,21 @@
             </p>
 
             <form action='/<=% menu_item.id %>' method="POST">
-              <textarea class="textarea_small">item.title</textarea><br/>
-              <input type='submit' value='Save'>
+              <textarea class="textarea_short_and_long">item.title</textarea><br/>
+              <input type='submit' value='Save' class='edit_button'>
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="button" value="DELETE" class="edit_button"/>
             </form>
 
             <form action='/<=% menu_item.id %>' method="POST">
-              <textarea class="textarea_small">item.description</textarea><br/>
-              <input type='submit' value='Save'>
+              <textarea class="textarea_big">item.description</textarea><br/>
+              <input type='submit' value='Save' class='edit_button'>
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="button" value="DELETE" class="edit_button"/>
             </form>
 
-            <table class="table_fix">
-              <tbody>
-                <tr>
-                  <td>
-                    <form method="POST" action="/<=% menu_item.id %>">
-                      <input type="hidden" name="_method" value="DELETE">
-                      <input type="button" value="DELETE" class="edit_button"/>
-                    </form>
-                  </td>
-                  <td>
-                    <form method="get" action="/menu">
-                      <input type="button" value='Edit' class="edit_button">
-                    </form>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </li>
-      </ul>
-    </div>
+
+
 
 
 
