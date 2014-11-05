@@ -8,8 +8,13 @@
   height: 55px;
 }
 
+.textarea_short_and_long {
+  width: 925px;
+  height: 55px;
+}
+
 .textarea_big {
-  width: 960px;
+  width: 925px;
   height: 180px;
 }
 

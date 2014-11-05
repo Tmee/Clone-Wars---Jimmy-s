@@ -12,6 +12,8 @@
 	<title>Burgers Denver | Italian Beef &amp; Burger Restaurant </title>
 
 	<!-- Pingback URL -->
+
+	<link rel="stylesheet" href="<%= url('main.css') %>">
 	<link rel="pingback" href="http://lodojimmys.com/xmlrpc.php" />
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -164,8 +166,8 @@ var php_data = {"menu_text":"Go To..."};
     			<div class="box widget widget_text">
             <div class="textwidget">
               <div class="OTButton">
-                  <form action='/reserve'>
-                  <input type="image" src="http://i557.photobucket.com/albums/ss15/Zomisos/redbutton.png">
+                  <form method="link" action='/reserve'>
+                  <input type="image" src="http://i557.photobucket.com/albums/ss15/Zomisos/imageedit_1_3225289262.gif" class="button_fix">
                   </form>
                 </div>
               </div>
