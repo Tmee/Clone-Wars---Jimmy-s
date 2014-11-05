@@ -17,8 +17,20 @@ class MenuDatabase
     database.from(:menu_items).where(:id => id).delete
   end
 
-  def self.update(title, description)
-    database.from(:menu_items).where()
+  def self.update_menu_item(params)
+    database.from(:menu_items).where(:id => params[:id])
+                              .update(:name => params[:name],
+                                      :price => params[:price],
+                                      :description => params[:description]
+                                      )
+
+  end
+
+  def self.update_menu_category(params)
+    database.from(:menu_categories).where(:id => params[:id])
+                                   .update(:title => params[:title],
+                                           :notes => params[:notes]
+                                           )
   end
 
   def self.create(data)
