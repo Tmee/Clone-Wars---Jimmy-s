@@ -16,6 +16,10 @@ class JimmysApp < Sinatra::Base
     erb :about_us
   end
 
+  get '/reserve' do
+    erb :reservation
+  end
+
   get '/menu' do
     erb :menu, layout: :menu_layout
   end
