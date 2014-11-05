@@ -38,7 +38,7 @@ class MenuDatabase
        :password => 'zJb4a_RudTaS4brpfbEorW87dx',
        :host => 'ec2-54-83-201-96.compute-1.amazonaws.com')
     else
-       db = Sequel.sqlite 'db/menu_items.backup_db.sqlite3'
+       db = Sequel.sqlite 'db/menu_items.sqlite3'
     end
   end
 
