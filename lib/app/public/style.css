@@ -1,3 +1,4 @@
+
 /*
 
 	Theme Name: Jimmy
@@ -2441,18 +2442,3 @@ only screen and (min-resolution: 144dpi) {
 /*  ==============  New CSS  ==============  */
 
 
-.table_fix {
-	border: none;
-	padding: none;
-}
-
-
-.textarea-small textarea {
-	width: 300px;
-	height: 54px;
-}
-
-.textarea-big textarea {
-	width: 954px;
-	height: 188px;
-}

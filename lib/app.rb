@@ -62,11 +62,16 @@ class JimmysApp < Sinatra::Base
     "something should go here"
   end
 
+  post '/1/about_us' do
+    'something something something'
+  end
+
   post '/contact_us' do
     name = params[:name]
     subject = params[:subject] || ""
     email = params[:mail]
     message = params[:message]
+
 
     require 'pony'
     Pony.mail({

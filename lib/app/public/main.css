@@ -1,0 +1,14 @@
+.table_fix {
+  border: none;
+  padding: none;
+}
+
+.textarea_small {
+  width: 400px;
+  height: 55px;
+}
+
+.textarea_big {
+  width: 960px;
+  height: 180px;
+}
