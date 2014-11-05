@@ -6,11 +6,11 @@ class MenuItem
               :category_id
 
   def initialize (data)
-    id          = data[:id]
-    name        = data[:name]
-    price       = data[:price]
-    description = data[:description]
-    category_id = data[:category_id]
+    @id          = data[:id]
+    @name        = data[:name]
+    @price       = data[:price]
+    @description = data[:description]
+    @category_id = data[:category_id]
   end
 
   def save
