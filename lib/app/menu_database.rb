@@ -18,6 +18,7 @@ class MenuDatabase
   end
 
   def self.update_menu_item(params)
+
     database.from(:menu_items).where(:id => params[:id])
                               .update(:name => params[:name],
                                       :price => params[:price],
