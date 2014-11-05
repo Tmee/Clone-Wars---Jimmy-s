@@ -126,6 +126,16 @@ return true;
   <div id="SearchNav_divSearchBoxes" class="SimpleSearchWrapper">
     <div id="divDatePickerWrapper" class="SimpleSearchDatePickerWrapper">
 
+    </div>
+
+      <p>
+        <label for="name" form="nice_contact">Your Name<span class="required">*</span></label>
+        <input type="text" name="resname" id="resname" value="" class="required email" style='width: 200px;'/>
+      </p>
+
+
+  </div>
+
   <div class="SearchDatePicker"><!-- was DatePickerControl -->
     <span id="SearchNav_OTDateSearch_lblDateLabel" class="DatePickerControlDateEditLabel SearchLabel">Date</span>
     <br class="labelbr hideBR" />
@@ -138,30 +148,29 @@ return true;
       since we want to control it, its in the resource but string is parameterized.
       If you are re-generating resources for this page, ensure that you strip resource information from this control -->
 
-      <label for="name" form="nice_contact">Your Name<span class="required">*</span></label>
-      <select name="SearchNav$OTDateSearch$cboHourList" id="SearchNav_OTDateSearch_cboHourList" class="DatePickerControlHourDropDown genericSelect" onfocus="killAllCalendars();" onchange="return ValidateDateTime()">
-              <option value="1">1__</option>
-              <option value="2">2__</option>
-              <option value="3">3__</option>
-              <option value="4">4__</option>
-              <option value="5">5__</option>
-              <option value="6">6__</option>
-              <option value="7">7__</option>
-              <option value="8">8__</option>
-              <option value="9">9__</option>
-              <option value="10">10___</option>
-              <option value="11">11___</option>
-              <option value="12">12___</option>
+      <select name="month" id="month" class="DatePickerControlHourDropDown genericSelect" onfocus="killAllCalendars();" onchange="return ValidateDateTime()" style='width: 50px;'>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
             </select>
-      <select name="SearchNav$OTDateSearch$cboHourList" id="SearchNav_OTDateSearch_cboHourList" class="DatePickerControlHourDropDown genericSelect" onfocus="killAllCalendars();" onchange="return ValidateDateTime()">
-              <option value="1">1___</option>
-              <option value="2">2___</option>
-              <option value="3">3___</option>
-              <option value="4">4___</option>
-              <option value="5">5___</option>
-              <option value="6">6___</option>
-              <option value="7">7___</option>
-              <option value="8">8___</option>
+      <select name="day" id="day" class="DatePickerControlHourDropDown genericSelect" onfocus="killAllCalendars();" onchange="return ValidateDateTime()" style='width: 50px;'>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
               <option value="9">9</option>
               <option value="10">10</option>
               <option value="11">11</option>
@@ -186,7 +195,7 @@ return true;
               <option value="30">30</option>
               <option value="31">31</option>
               </select>
-       <select name="SearchNav$OTDateSearch$cboHourList" id="SearchNav_OTDateSearch_cboHourList" class="DatePickerControlHourDropDown genericSelect" onfocus="killAllCalendars();" onchange="return ValidateDateTime()">
+       <select name="year" id="year" class="DatePickerControlHourDropDown genericSelect" onfocus="killAllCalendars();" onchange="return ValidateDateTime()" style='width: 75px;'>
               <option value="2014">2014</option>
               <option value="2015">2015</option>
               <option value="2016">2016</option>
@@ -208,7 +217,7 @@ return true;
     <span id="SearchNav_OTDateSearch_lblHourLabel" class="DatePickerControlHourLabel SearchLabel">Time</span>
     <br class="labelbr hideBR" />
     <div class="FieldContainer genericSelectWrapper">
-      <select name="SearchNav$OTDateSearch$cboHourList" id="SearchNav_OTDateSearch_cboHourList" class="DatePickerControlHourDropDown genericSelect" onfocus="killAllCalendars();" onchange="return ValidateDateTime()">
+      <select name="time" id="time" class="DatePickerControlHourDropDown genericSelect" onfocus="killAllCalendars();" onchange="return ValidateDateTime()"style='width: 100px;'>
         <option value="12:00 AM">12:00 AM</option>
         <option value="12:30 AM">12:30 AM</option>
         <option value="1:00 AM">1:00 AM</option>
@@ -259,7 +268,7 @@ return true;
         <option value="11:30 PM">11:30 PM</option>
 
             </select>
-                </div>
+          </div><br>
         </div>
         <input type="hidden" name="SearchNav$OTDateSearch$hidDtVal" id="SearchNav_OTDateSearch_hidDtVal" value="11/04/2014" />
         <input type="hidden" name="SearchNav$OTDateSearch$hdnDefTimeval" id="SearchNav_OTDateSearch_hdnDefTimeval" value="7:00 PM" />
@@ -269,7 +278,7 @@ return true;
         <div id="divPartySize" class="SimpleSearchPartySizeWrapper">
           <span id="SearchNav_lblPartySizeLabel" class="SimpleSearchPartySizeLabel">Party Size</span><br class="labelbr" />
           <div class="FieldContainer">
-            <select name="SearchNav$cboPartySize" id="SearchNav_cboPartySize" class="SimpleSearchPartySize">
+            <select name="partysize" id="partysize" class="SimpleSearchPartySize" style='width: 100px;'>
               <option value="1">1 person</option>
               <option selected="selected" value="2">2 people</option>
               <option value="3">3 people</option>
@@ -293,11 +302,12 @@ return true;
 
               </select>
             </div>
+            <br>
           </div>
 
           <p>
             <label for="mail" form="nice_contact">Your E-Mail<span class="required">*</span></label>
-            <input type="text" name="mail" id="mail" value="" class="required email" />
+            <input type="text" name="mail" id="mail" value="" class="required email" style='width: 200px;'/>
           </p>
 
 
@@ -344,6 +354,8 @@ return true;
       <span id="RestInfoWB_lblPrice" class="Text">$30 and under</span></li>
    </ul>
 </div>
+<img src="http://i557.photobucket.com/albums/ss15/Zomisos/clonewars_turing_rip.png" alt="Turing" align="right"/>
+
         </div>
       </div>
       </div>

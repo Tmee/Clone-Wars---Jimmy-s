@@ -119,6 +119,34 @@ class JimmysApp < Sinatra::Base
       redirect '/'
    end
 
+  post '/jimmys-urban-bar-and-grill-reservations-denver' do
+    resname = params[:resname]
+    day = params[:day]
+    month = params[:month]
+    year = params[:year]
+    party = params[:partysize]
+    time = params[:time]
+
+    require 'pony'
+    Pony.mail({
+        :to => 'larsonkonr@gmail.com',
+        :from => resname,
+        :subject => "Reservation for: #{resname}",
+        :body => "#{resname} would like a reservation for #{party} guests on #{month} / #{day} / #{year} at #{time} ",
+        :via => :smtp,
+          :via_options => {
+            :address              => 'smtp.gmail.com',
+            :port                 => '587',
+            :enable_starttls_auto => true,
+            :user_name            => 'larsonkonr@gmail.com',
+            :password             => '9am380y1',
+            :authentication       => :plain,
+            :domain               => "http://lodojimmys.herokuapp.com/"
+                          }
+              })
+    redirect '/'
+  end
+
   def respond
     "Thanks for the input, I'll make sure not to use it."
   end
