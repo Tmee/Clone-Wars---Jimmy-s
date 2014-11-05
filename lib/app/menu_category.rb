@@ -8,7 +8,5 @@ class MenuCategory
   end
 
   def menu_items
-    
   end
-
 end

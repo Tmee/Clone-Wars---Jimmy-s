@@ -13,4 +13,17 @@ class MenuItem
     category_id = data[:category_id]
   end
 
+  def save
+    MenuDatabase.create(to_h)
+  end
+
+  def to_h
+  {
+    "title" => title,
+    "description" => description,
+    "price" => price,
+    "url_id" => url_id
+  }
+  end
+
 end

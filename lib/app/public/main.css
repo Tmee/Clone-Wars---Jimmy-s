@@ -1,0 +1,45 @@
+.table_fix {
+  border: none;
+  padding: none;
+}
+
+.textarea_small {
+  width: 400px;
+  height: 55px;
+}
+
+.textarea_short {
+  width: 255px;
+  height: 35px;
+}
+
+.textarea_short_and_tall {
+  width: 455px;
+  height: 55px;
+}
+.textarea_big {
+  width: 925px;
+  height: 180px;
+}
+
+.button_fix {
+  width: 150px;
+  height: 25px;
+  padding: 0;
+  border: 0;
+  border-radius: 15px;
+}
+
+.edit_button {
+  background: #333;
+  color: #fff;
+  width: 50px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+}
+
+.button {
+  width: 240px;
+  height: 20px;
+}

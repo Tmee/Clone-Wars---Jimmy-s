@@ -16,6 +16,10 @@ class JimmysApp < Sinatra::Base
     erb :about_us
   end
 
+  get '/reserve' do
+    erb :reservation
+  end
+
   get '/menu' do
     erb :menu, layout: :menu_layout
   end
@@ -28,19 +32,73 @@ class JimmysApp < Sinatra::Base
     erb :contact_us
   end
 
+  # ========== Admin Areas ========== #
+
   get '/admin' do
     protected!
-    erb :admin
+    erb :admin, layout: :admin_layout
+  end
+
+  get '/admin/home' do
+    respond
+  end
+
+  get '/admin/about_us' do
+    erb :admin_about_us, layout: :admin_layout
   end
 
   get '/admin/menu' do
+    erb :admin_menu, layout: :admin_layout
   end
+
+  get '/admin/location' do
+    respond
+  end
+
+  get '/admin/contact_us' do
+    respond
+  end
+
+  get '/admin/reserve' do
+    respond
+  end
+
+  # ====== Admin Edit / Save / Delete ====== #
+
+  #menu editing
+
+  post '/' do
+    MenuDatabase.create(params[:id])
+    redirect '/admin/menu'
+  end
+
+  get '/:url_id/edit' do |id|
+    id = MenuDatabase.find(id)
+    erb :admin_edit, locals: {url_id: id}
+  end
+
+  delete '/:id' do |id|
+    MenuDatabase.delete(id.to_i)
+    redirect '/admin/menu'
+  end
+
+  post '/1/about_us' do
+    respond
+  end
+
+  post '/2/about_us' do
+    respond
+  end
+
+
+# ======== End Admin ======== #
 
   post '/contact_us' do
     name = params[:name]
     subject = params[:subject] || ""
     email = params[:mail]
     message = params[:message]
+
 
     require 'pony'
     Pony.mail({
@@ -61,6 +119,10 @@ class JimmysApp < Sinatra::Base
       })
       redirect '/'
    end
+
+  def respond
+    "Thanks for the input, I'll make sure not to use it."
+  end
 
   def protected!
     return if authorized?
