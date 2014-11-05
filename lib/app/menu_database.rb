@@ -14,15 +14,11 @@ class MenuDatabase
   end
 
   def self.delete(id)
-    database.transaction do
-      database['menu_items'].delete_at(id)
-    end
+    database.from(:menu_items).where(:id => id).delete
   end
 
   def self.update(title, description)
-    database.transaction do
-      database['menu_items'][title] = description
-    end
+    database.from(:menu_items).where()
   end
 
   def self.create(data)
