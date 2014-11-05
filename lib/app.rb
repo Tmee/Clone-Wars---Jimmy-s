@@ -38,6 +38,28 @@ class JimmysApp < Sinatra::Base
   end
 
   get '/admin/menu' do
+    erb :admin_menu
+  end
+
+  get '/admin/home' do
+    "something should go here"
+  end
+
+  get '/admin/about_us' do
+    erb :admin_about_us
+  end
+
+  get '/admin/location' do
+    "something should go here"
+  end
+
+  get '/admin/contact_us' do
+    "something should go here"
+  end
+
+  get '/admin/reserve' do
+    protected!
+    "something should go here"
   end
 
   post '/contact_us' do

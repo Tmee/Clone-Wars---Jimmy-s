@@ -1,0 +1,44 @@
+<div>
+  <h1>Menu Editor</h1><br/>
+    <div>
+      <h2>Item Categories</h2><br/>
+      <ul>
+          <li>menu_items.each do |item|</li>
+          <li>item.category</li>
+        <form method="get" action="/menu">
+          <input type="submit" value='Edit'/>
+        </form>
+      </ul>
+    <div>
+      <h2>Menu Items</h2><br/>
+      <ul>
+        <p>
+         menu_items.each do |item|
+        </p>
+          <li>
+              Item Name<br/>
+              Item Description<br/>
+
+            <table class="table_fix">
+              <tbody>
+                <tr>
+                  <td>
+                    <form action="/menu" method="POST">
+                      <input type="hidden" name="_method" value="DELETE">
+                      <input type="submit" value="DELETE"/>
+                    </form>
+                  </td>
+                  <td>
+                    <form method="get" action="/menu">
+                      <input type="submit" value='Edit'>
+                    </form>
+                  </td>
+                </tr>
+              </tbody>
+            </table><br/>
+          </li>
+      </ul>
+    </div>
+
+
+
