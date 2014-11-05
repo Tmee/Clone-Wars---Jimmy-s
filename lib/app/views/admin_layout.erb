@@ -18,7 +18,7 @@ a, span.required, #footer .testimonials .feedback .feedback-url, .menu-box li .t
 .infobox .entry-excerpt a.read-more, .nav li ul, .menu-box .featured-image a, .nice-contact-form input[type="submit"]:hover,
 #commentform .button:hover, #respond input[type="submit"]:hover , #tabs .inside .tags a:hover, ul.four-col-grid .thumb a, .infobox .thumb a, .single .featured-image a, .post .featured-image a{ background-color: #C3572D; }
 #wrapper, #header { margin: 0 auto; max-width: 1020px; }
-body, .bg-image { background-image : url(http://i557.photobucket.com/albums/ss15/Zomisos/background1.png); }
+body, .bg-image { background-image : url(http://lodojimmys.com/wp-content/uploads/2014/08/background1.png); }
 body, .bg-image { background-color : #eeeeee; }
 body, .bg-image { background-position : left top; }
 body, .bg-image { background-repeat : repeat; }
@@ -130,6 +130,7 @@ var php_data = {"menu_text":"Go To..."};
 
 </head>
 
+
 <body class="home page page-id-18 page-template page-template-template-home-php sidebar-right chrome">
 
 <!-- BEGIN #wrapper -->
@@ -174,7 +175,8 @@ var php_data = {"menu_text":"Go To..."};
 
   <!-- END #header -->
   </header>
-  <h2><marquee behavior="scroll" direction="left" scrollamount="5">We will be closed Thursday, November 27 to celebrate Thanksgiving</marquee></h2>
+  <form action='/admin'>
+<center><h1><input type='submit' value='Admin Area'></h1><br/></form></center>
 <!-- BEGIN #container -->
 <div id="container" class="clearfix">
 
@@ -224,9 +226,11 @@ var php_data = {"menu_text":"Go To..."};
           <div class="box widget widget_text">
             <div class="textwidget">
               <div class="OTButton">
-                  <form method="LINK" action='/reserve'>
-                  <input type="submit" value="&#128197; Reserve Now" class="button_fix">
-                  </form>
+                <form action='/reserve'>
+                <input type="image" src="http://i557.photobucket.com/albums/ss15/Zomisos/redbutton.png">
+              </form>
+                <noscript id="OT_noscript"><a href="http://www.google.com" >Reserve Now On OpenTable.com</a></noscript>
+                <a id="OTPoweredBy" class="OTPoweredBy" href="http://www.google.com" ></a>
                 </div>
               </div>
             </div>

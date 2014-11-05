@@ -34,10 +34,39 @@ class JimmysApp < Sinatra::Base
 
   get '/admin' do
     protected!
-    erb :admin
+    erb :admin, layout: :admin_layout
   end
 
   get '/admin/menu' do
+    erb :admin_menu, layout: :admin_layout
+  end
+
+  get '/admin/home' do
+    respond
+  end
+
+  get '/admin/about_us' do
+    erb :admin_about_us, layout: :admin_layout
+  end
+
+  get '/admin/location' do
+    respond
+  end
+
+  get '/admin/contact_us' do
+    respond
+  end
+
+  get '/admin/reserve' do
+    respond
+  end
+
+  post '/1/about_us' do
+    respond
+  end
+
+  post '/2/about_us' do
+    respond
   end
 
   post '/contact_us' do
@@ -45,6 +74,7 @@ class JimmysApp < Sinatra::Base
     subject = params[:subject] || ""
     email = params[:mail]
     message = params[:message]
+
 
     require 'pony'
     Pony.mail({
@@ -65,6 +95,10 @@ class JimmysApp < Sinatra::Base
       })
       redirect '/'
    end
+
+  def respond
+    "Thanks for the input, I'll make sure not to use it."
+  end
 
   def protected!
     return if authorized?
