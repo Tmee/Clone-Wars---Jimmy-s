@@ -55,7 +55,6 @@ class MenuDatabase
   def self.create_menu_category_table(db)
     db.create_table? :menu_categories do
       primary_key :id
-      String      :name,   :size => 255
       String      :title,  :size => 255
       String      :notes,  :text => true
     end
@@ -98,7 +97,7 @@ class MenuDatabase
 
   def self.all_menu_categories
     categories = database.from(:menu_categories).select.to_a
-    categories.map {|category| MenuCategory.new(category)}
+    categories.map {|category| MenuCategory.new(category, self)}
   end
 
 end

@@ -1,12 +1,14 @@
 class MenuCategory
   attr_reader :name, :title, :notes
 
-  def initialize(data)
-    @name       = data[:name] #should be in format "category-item-[number]"
+  def initialize(data, database)
+    @id         = data[:id]
     @title      = data[:title] #actualy title of category
     @notes      = data[:notes]
+    @database   = database
   end
 
   def menu_items
+    @database.all_menu_items.select{|item| item.category_id == self.id}
   end
 end
