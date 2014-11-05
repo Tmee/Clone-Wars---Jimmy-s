@@ -38,7 +38,7 @@ class MenuDatabase
        :password => 'zJb4a_RudTaS4brpfbEorW87dx',
        :host => 'ec2-54-83-201-96.compute-1.amazonaws.com')
     else
-       db = Sequel.sqlite 'db/menu_items.sqlite3'
+       db = Sequel.sqlite 'db/menu_items.backup_db.sqlite3'
     end
   end
 
@@ -55,7 +55,7 @@ class MenuDatabase
   def self.create_menu_category_table(db)
     db.create_table? :menu_categories do
       primary_key :id
-      String      :title,  :size => 255
+      String      :name,  :size => 255
       String      :notes,  :text => true
     end
   end
@@ -68,7 +68,6 @@ class MenuDatabase
 
     categories.map do |category|
       categories_table.insert(:name  => category.text,
-                              :title => category["name"],
                               :notes => organized_descriptions[category]
                               )
     end
