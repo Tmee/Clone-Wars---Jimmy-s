@@ -7,7 +7,7 @@
 
 
     <% menu_categories.each do |cat| %>
-      <h2 class="menu-category" name="category-item-3"><a><%= cat.title %></a></h2>
+      <h2 class="menu-category" name="<%= cat.sidebar %>"><a><%= cat.title %></a></h2>
         <p><%= cat.notes %></p>
           <ul>
             <li id="dumb" category-id="1">
