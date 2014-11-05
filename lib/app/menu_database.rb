@@ -74,7 +74,7 @@ class MenuDatabase
     categories_table       = database.from(:menu_categories)
     categories             = menu_page.css('h2')
     descriptions           = menu_page.css('p').map(&:text)
-    organized_descriptions = categories.zip(descriptions).to_h
+    organized_descriptions = Hash[*categories.zip(descriptions).flatten]
 
     categories.map do |category|
       categories_table.insert(:name  => category.text,
