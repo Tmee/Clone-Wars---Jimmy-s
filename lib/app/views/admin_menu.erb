@@ -6,7 +6,7 @@
           <li>menu_items.each do |item|</li>
           <li>item.category</li>
         <form method="get" action="/menu">
-          <input type="submit" value='Edit'/>
+          <input type="button" value='Edit' class="edit_button"/>
         </form>
       </ul>
     <div>
@@ -23,19 +23,19 @@
               <tbody>
                 <tr>
                   <td>
-                    <form action="/menu" method="POST">
+                    <form method="POST" action="/menu">
                       <input type="hidden" name="_method" value="DELETE">
-                      <input type="submit" value="DELETE"/>
+                      <input type="button" value="DELETE" class="edit_button"/>
                     </form>
                   </td>
                   <td>
                     <form method="get" action="/menu">
-                      <input type="submit" value='Edit'>
+                      <input type="button" value='Edit' class="edit_button">
                     </form>
                   </td>
                 </tr>
               </tbody>
-            </table><br/>
+            </table>
           </li>
       </ul>
     </div>
