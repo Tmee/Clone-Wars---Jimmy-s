@@ -25,3 +25,12 @@
   -webkit-box-shadow: 5px 5px 5px #777777;
   box-shadow: 5px 5px 5px #777777;
 }
+
+.edit_button {
+  background: #333;
+  color: #fff;
+  width: 50px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+}
