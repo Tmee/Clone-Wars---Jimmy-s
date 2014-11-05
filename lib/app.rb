@@ -35,6 +35,12 @@ class JimmysApp < Sinatra::Base
     erb :contact_us
   end
 
+  get '/item_description/:id' do |id|
+    menu_item     = MenuDatabase.find_menu_item(id)
+    item_category = MenuDatabase.find_item_category(id)
+    erb :item_description, locals: {menu_item: menu_item, item_category: item_category}
+  end
+
   # ========== Admin Areas ========== #
 
   get '/admin' do
@@ -68,14 +74,14 @@ class JimmysApp < Sinatra::Base
     respond
   end
 
+
+
   # ====== Admin Edit / Save / Delete ====== #
 
   #menu editing
 
   put '/admin/:id' do
-
     MenuDatabase.update_menu_item(params)
-
     redirect '/admin/menu'
   end
 

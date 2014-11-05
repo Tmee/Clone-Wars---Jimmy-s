@@ -13,7 +13,7 @@
             <li id="dumb" category-id="1">
               <% cat.menu_items.each do |item| %>
                 <div class="title clearfix">
-                  <span><a href="http://lodojimmys.com/menu/greek-nachos/" title="Permanent Link to <%=  %>"><%= item.name %></a></span>
+                  <span><a href="/item_description/<%=item.id%>" title="Permanent Link to <%=item.name%>"><%= item.name %></a></span>
                   <span class="price"><%= item.price %></span>
                 </div>
                 <div class="description clearfix">

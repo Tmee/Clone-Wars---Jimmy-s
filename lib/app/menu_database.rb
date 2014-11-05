@@ -17,6 +17,16 @@ class MenuDatabase
     database.from(:menu_items).where(:id => id).delete
   end
 
+  def self.find_menu_item(id)
+    item = database.from(:menu_items).where(:id => id).to_a
+    item.map {|item| MenuItem.new(item)}
+  end
+
+  def self.find_item_category(id)
+    category = database.from(:menu_categories).where(:id => id).to_a
+    category.map {|category| MenuCategory.new(category, self)}
+  end
+
   def self.update_menu_item(params)
 
     database.from(:menu_items).where(:id => params[:id])
@@ -26,6 +36,7 @@ class MenuDatabase
                                       )
 
   end
+
 
   def self.update_menu_category(params)
     database.from(:menu_categories).where(:id => params[:id])

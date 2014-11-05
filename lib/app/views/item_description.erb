@@ -1,30 +1,28 @@
-<aside id="sidebar" role="complementary" class="no-image">
+
   <header>
-    <
-    <h1><%= item.name %><span class="price"><%= item.price %></span></h1>
+
+    <% menu_item.each do |item| %>
+
+    <h1><%= item.name %></h1>
+    <h1 class='price'><%= item.price %></h1>
+
+
   </header>
 
-      <h4><span class="menu-categories"><a href="http://lodojimmys.com/menu-category/specialty-sandwiches/" rel="tag">Specialty Sandwiches</a></span><!--/.menu-categories-->
-</h4>
+  <% item_category.each do |category| %>
+      <h4><span class="menu-categories"><a href="http://lodojimmys.com/menu-category/specialty-sandwiches/" rel="tag"><%= category.name %></a></span></h4>
 
       <div class="post-content entry">
-        <p>Thick Gyro meat, tomato, red onion, goat cheese, raita sauce served in a flatbread.</p>
+        <p><%= item.description %></p>
       </div>
 
-  <!-- END #sidebar -->
+  <%end%>
+  <%end%>
+
+
   </aside>
 
-  <!-- BEGIN #content -->
-  <div id="content" class="no-image">
 
-    <article class="post-88 menu type-menu status-publish hentry">
-
-
-
-        </article>
-
-  </div>
-  <!-- END #content -->
 
   <section class="single-menu-meta">
 
