@@ -22,8 +22,9 @@ class JimmysApp < Sinatra::Base
   end
 
   get '/menu' do
-    menu_items = MenuDatabase.all_menu_items
-    erb :menu, layout: :menu_layout
+    menu_categories = MenuDatabase.all_menu_categories
+    menu_items      = MenuDatabase.all_menu_items
+    erb :menu, locals: {menu_items: menu_items, menu_categories: menu_categories}, layout: :menu_layout
   end
 
   get '/location' do
@@ -71,13 +72,13 @@ class JimmysApp < Sinatra::Base
 
   #menu editing
 
-  put '/admin/:id' do
+  post '/admin/:id' do
     MenuDatabase.update(params[:id])
     redirect '/admin/menu'
   end
 
-  delete '/:id' do |id|
-    MenuDatabase.delete(id.to_i)
+  delete '/admin/:id' do |id|
+    MenuDatabase.delete(id)
     redirect '/admin/menu'
   end
 

@@ -1,11 +1,12 @@
 <div>
   <h1>Menu Editor</h1><br/>
     <div>
-      <h2>Item Categories</h2><br/>
+      <h2>Menu Categories</h2><br/>
       <ul>
         <li>
           <p><% menu_categories.each do |item| %></p>
 
+          <h3><%= item.title %></h3>
 
           <form method="POST" action="/admin/<=% item.id %>">
             <input type="hidden" name="_method" value="PUT"/>
@@ -26,20 +27,26 @@
          <% menu_items.each do |item| %>
         </p>
 
-        <form action='/admin/<=% item.id %>' method="POST">
-          <input type="hidden" name="_method" value="DELETE"/>
-          <textarea class="textarea_short"><%=item.name%></textarea><br/>
-          <input type="button" value='Save' class="edit_button"/>
-          <input type="button" value="DELETE" class="edit_button"/>
-        </form>
+          <h3><%= item.name %></h3>
+            <textarea class="textarea_short"><%=item.name%></textarea><br/>
+              <form action='/admin/<%=item.id%>' method="POST">
+                <input type="hidden" name="_method" value="DELETE"/>
+                <input type="submit" value="DELETE" class="edit_button"/>
+              </form>
 
-        <form action='/admin/<=% item.id %>' method="POST">
-          <input type="hidden" name="_method" value="DELETE"/>
-          <textarea class="textarea_short_and_tall"><%=item.description%></textarea><br/>
-          <input type="button" value='Save' class="edit_button"/>
-          <input type="button" value="DELETE" class="edit_button"/>
-        </form>
-        <%end%>
+              <form action='/admin/<%=item.id%>' method="POST"/>
+                <input type="hidden" name="menu_item[:name]" value="<%= item.name %>"/>
+                <input type="submit" value='Save' class="edit_button"/>
+              </form>
+
+
+          <form action='/admin/<=% item.id %>' method="POST">
+            <input type="hidden" name="_method" value="DELETE"/>
+            <textarea class="textarea_short_and_tall"><%=item.description%></textarea><br/>
+            <input type="button" value='Save' class="edit_button"/>
+            <input type="button" value="DELETE" class="edit_button"/>
+          </form>
+          <%end%>
       </li>
     </ul>
   </div>
