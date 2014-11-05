@@ -10,8 +10,5 @@ class MenuCategory
 
   def menu_items
   end
-
-  def self.all
-  end
-
+  
 end
