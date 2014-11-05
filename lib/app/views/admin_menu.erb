@@ -7,7 +7,8 @@
           <p><% menu_categories.each do |item| %></p>
 
 
-          <form method="POST" action="/<=% item.id %>">
+          <form method="POST" action="/admin/<=% item.id %>">
+            <input type="hidden" name="_method" value="PUT"/>
             <textarea class='textarea_short'><%= item.title %></textarea><br/>
             <input type="button" value='Save' class="edit_button"/>
           </form>
@@ -25,17 +26,17 @@
          <% menu_items.each do |item| %>
         </p>
 
-        <form action='/<=% menu_item.id %>' method="POST">
+        <form action='/admin/<=% item.id %>' method="POST">
+          <input type="hidden" name="_method" value="DELETE"/>
           <textarea class="textarea_short"><%=item.name%></textarea><br/>
           <input type="button" value='Save' class="edit_button"/>
-          <input type="hidden" name="_method" value="DELETE">
           <input type="button" value="DELETE" class="edit_button"/>
         </form>
 
-        <form action='/<=% menu_item.id %>' method="POST">
+        <form action='/admin/<=% item.id %>' method="POST">
+          <input type="hidden" name="_method" value="DELETE"/>
           <textarea class="textarea_short_and_tall"><%=item.description%></textarea><br/>
           <input type="button" value='Save' class="edit_button"/>
-          <input type="hidden" name="_method" value="DELETE">
           <input type="button" value="DELETE" class="edit_button"/>
         </form>
         <%end%>

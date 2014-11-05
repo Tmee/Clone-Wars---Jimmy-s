@@ -22,6 +22,7 @@ class JimmysApp < Sinatra::Base
   end
 
   get '/menu' do
+    menu_items = MenuDatabase.all_menu_items
     erb :menu, layout: :menu_layout
   end
 
@@ -70,8 +71,8 @@ class JimmysApp < Sinatra::Base
 
   #menu editing
 
-  post '/' do
-    MenuDatabase.create(params[:id])
+  put '/admin/:id' do
+    MenuDatabase.update(params[:id])
     redirect '/admin/menu'
   end
 
