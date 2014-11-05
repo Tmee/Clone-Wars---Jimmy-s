@@ -72,11 +72,6 @@ class JimmysApp < Sinatra::Base
     redirect '/admin/menu'
   end
 
-  get '/:url_id/edit' do |id|
-    id = MenuDatabase.find(id)
-    erb :admin_edit, locals: {url_id: id}
-  end
-
   delete '/:id' do |id|
     MenuDatabase.delete(id.to_i)
     redirect '/admin/menu'
