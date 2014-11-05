@@ -11,6 +11,24 @@ class MenuDatabase
     db
   end
 
+  def self.delete(id)
+    database.transaction do
+      database['menu_items'].delete_at(id)
+    end
+  end
+
+  def self.update(title, description)
+    database.transaction do
+      database['menu_items'][title] = description
+    end
+  end
+
+  def self.create(data)
+    database.transaction do
+      database['menu_items'] << data
+    end
+  end
+
   def self.create_db
     if ENV["RACK_ENV"] == "production"
        Sequel.postgres('d8mr4qm3tinvhh',
