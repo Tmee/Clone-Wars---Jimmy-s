@@ -5,7 +5,7 @@
         <li>
           <%menu_categories.each do |item|%>
             <h3><%=item.title%></h3>
-          <form action='/admin/category/<%=item.id%>' method="POST">
+          <form action='/admin/category/<%=item.id%>' method="POST"/>
             <textarea class='textarea_short' name='title'>
               <%=item.title%>
             </textarea><br/>
@@ -13,7 +13,7 @@
             <input type="submit" value='Save'/>
           </form>
           <%end%>
-        </li>
+        </li>/
       </ul>
     </div>
   <div>

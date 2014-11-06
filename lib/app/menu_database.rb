@@ -23,8 +23,7 @@ class MenuDatabase
     category.map {|category| MenuCategory.new(category, self)}
   end
 
-  def update_menu_item(params)
-
+  def update_menu_item(params
     database.from(:menu_items).where(:id => params[:id])
                               .update(:name => params[:name],
                                       :price => params[:price],
