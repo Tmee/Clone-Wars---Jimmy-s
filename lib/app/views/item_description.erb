@@ -1,13 +1,16 @@
 
-  <header>
+
 
     <% menu_item.each do |item| %>
-<span display: inline>
-    <h1><%= item.name %></h1>
-    <h1 class='price'><%= item.price %></h1><br/>
-</span>
 
-  </header>
+    <h1>
+      <%= item.name %>
+      <span class="price"><%= item.price %></span>
+    </h1><br/>
+
+      <span class="menu-categories">
+
+
 
       <div class="post-content entry">
         <p><%= item.description %></p>
