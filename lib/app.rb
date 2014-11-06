@@ -1,4 +1,5 @@
 require 'bundler'
+require 'pony'
 Bundler.require
 require_relative './app/menu_database'
 
@@ -110,58 +111,51 @@ class JimmysApp < Sinatra::Base
 # ======== End Admin ======== #
 
   post '/contact_us' do
-    name = params[:name]
+    name    = params[:name]
     subject = params[:subject] || ""
-    email = params[:mail]
+    email   = params[:mail]
     message = params[:message]
 
-
-    require 'pony'
     Pony.mail({
-        :to => 'larsonkonr@gmail.com',
-        :from => email,
-        :subject => subject,
-        :body => name + " says " + message,
-        :via => :smtp,
-        :via_options => {
-         :address              => 'smtp.gmail.com',
-         :port                 => '587',
-         :enable_starttls_auto => true,
-         :user_name            => 'larsonkonr@gmail.com',
-         :password             => '9am380y1',
-         :authentication       => :plain,
-         :domain               => "http://lodojimmys.herokuapp.com/"
-         }
-      })
+               :to          => 'larsonkonr@gmail.com',
+               :from        => email,
+               :subject     => subject,
+               :body        => name + " says " + message,
+               :via         => :smtp,
+               :via_options => via_options
+              })
       redirect '/'
    end
 
   post '/jimmys-urban-bar-and-grill-reservations-denver' do
-    resname = params[:resname]
-    day = params[:day]
-    month = params[:month]
-    year = params[:year]
-    party = params[:partysize]
-    time = params[:time]
+    resname  = params[:resname]
+    day      = params[:day]
+    month    = params[:month]
+    year     = params[:year]
+    party    = params[:partysize]
+    time     = params[:time]
 
-    require 'pony'
     Pony.mail({
-        :to => 'larsonkonr@gmail.com',
-        :from => resname,
-        :subject => "Reservation for: #{resname}",
-        :body => "#{resname} would like a reservation for #{party} guests on #{month} / #{day} / #{year} at #{time} ",
-        :via => :smtp,
-          :via_options => {
-            :address              => 'smtp.gmail.com',
-            :port                 => '587',
-            :enable_starttls_auto => true,
-            :user_name            => 'larsonkonr@gmail.com',
-            :password             => '9am380y1',
-            :authentication       => :plain,
-            :domain               => "http://lodojimmys.herokuapp.com/"
-                          }
+               :to            => 'larsonkonr@gmail.com',
+               :from          => resname,
+               :subject       => "Reservation for: #{resname}",
+               :body          => "#{resname} would like a reservation for #{party} guests on #{month} / #{day} / #{year} at #{time} ",
+               :via           => :smtp,
+               :via_options   => via_options
               })
     redirect '/'
+  end
+
+  def via_options
+    {
+      :address              => 'smtp.gmail.com',
+      :port                 => '587',
+      :enable_starttls_auto => true,
+      :user_name            => 'larsonkonr@gmail.com',
+      :password             => '9am380y1',
+      :authentication       => :plain,
+      :domain               => "http://lodojimmys.herokuapp.com/"
+    }
   end
 
   def respond

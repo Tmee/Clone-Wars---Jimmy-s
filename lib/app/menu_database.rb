@@ -2,59 +2,76 @@ require 'sequel'
 require 'nokogiri'
 require './lib/app/menu_category'
 require './lib/app/menu_item'
+require './lib/app/scraper'
 
 class MenuDatabase
+  attr_reader :database, :menu_items, :menu_categories
 
-  def database
-    @db ||= create_db
+  def initialize
+    @database        = create_db
+    @menu_items      = database.from(:menu_items)
+    @menu_categories = database.from(:menu_categories)
+  end
+
+  def all_menu_items
+    items = menu_items.select.to_a
+    items.map {|item| MenuItem.new(item)}
+  end
+
+  def all_menu_categories
+    categories = menu_categories.select.to_a
+    categories.map {|category| MenuCategory.new(category, self)}
   end
 
   def delete(id)
-    database.from(:menu_items).where(:id => id).delete
+    menu_items.where(:id => id).delete
   end
 
   def find_menu_item(id)
-    item = database.from(:menu_items).where(:id => id).to_a
-    item.map {|item| MenuItem.new(item)}
+    item     = menu_items.where(:id => id).first
+    MenuItem.new(item)
   end
 
   def find_item_category(id)
-    category = database.from(:menu_categories).where(:id => id).to_a
-    category.map {|category| MenuCategory.new(category, self)}
+    category = menu_categories.where(:id => id).first
+    MenuCategory.new(category, self)
   end
 
-  def update_menu_item(params
+
+  def update_menu_item(params)
     database.from(:menu_items).where(:id => params[:id])
                               .update(:name => params[:name],
                                       :price => params[:price],
                                       :description => params[:description]
                                       )
 
-  end
 
+  end
 
   def update_menu_category(params)
-    database.from(:menu_categories).where(:id => params[:id])
-                                   .update(:title => params[:title],
-                                           :notes => params[:notes]
-                                           )
-  end
-
-  def create(data)
-    database.transaction do
-      database['menu_items'] << data
-    end
+    menu_categories.where(:id => params[:id])
+                   .update(:name => params[:title],
+                           :notes => params[:notes]
+                          )
   end
 
   def create_db
     if ENV["RACK_ENV"] == "production"
-       Sequel.postgres('d8mr4qm3tinvhh',
-       :user => 'gswvukupvdmxcu',
-       :password => 'zJb4a_RudTaS4brpfbEorW87dx',
-       :host => 'ec2-54-83-201-96.compute-1.amazonaws.com')
+       choose_postgres
     else
-       Sequel.sqlite 'db/menu_items.sqlite3'
+       choose_sqlite
     end
+  end
+
+  def choose_postgres
+    Sequel.postgres('d8mr4qm3tinvhh',
+    :user           => 'gswvukupvdmxcu',
+    :password       => 'zJb4a_RudTaS4brpfbEorW87dx',
+    :host           => 'ec2-54-83-201-96.compute-1.amazonaws.com')
+  end
+
+  def choose_sqlite
+    Sequel.sqlite 'db/menu_items.sqlite3'
   end
 
   def create_menu_items_table(db)
@@ -76,44 +93,12 @@ class MenuDatabase
     end
   end
 
-  def scrape_for_menu_categories
-    categories_table       = database.from(:menu_categories)
-    categories             = menu_page.css('h2')
-    descriptions           = menu_page.css('p').map(&:text)
-    organized_descriptions = Hash[*categories.zip(descriptions).flatten]
-
-    categories.map do |category|
-      categories_table.insert(:name  => category.text,
-                              :notes => organized_descriptions[category],
-                              :sidebar => category["name"]
-                              )
-    end
+  def populate_menu_categories
+    Scraper.scrape_for_menu_categories(menu_categories)
   end
 
-  def scrape_for_menu_items
-    items     = database.from(:menu_items)
-    erb_items = menu_page.css('li#dumb')
-    erb_items.map do |item|
-      items.insert(:name => item.css('div').first.css('span a').text,
-                   :price => item.css('div').first.css('span.price').text,
-                   :description => item.css('div.description').text.gsub('\n', ''),
-                   :category_id => item["category-id"]
-                   )
-    end
-  end
-
-  def menu_page
-    Nokogiri::HTML(open("db/backup_db/backup_menu_view.erb"))
-  end
-
-  def all_menu_items
-    items = database.from(:menu_items).select.to_a
-    items.map {|item| MenuItem.new(item)}
-  end
-
-  def all_menu_categories
-    categories = database.from(:menu_categories).select.to_a
-    categories.map {|category| MenuCategory.new(category, self)}
+  def populate_menu_items
+    Scraper.scrape_for_menu_items(menu_items)
   end
 
 end
