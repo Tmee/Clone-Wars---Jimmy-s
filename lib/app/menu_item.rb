@@ -12,5 +12,10 @@ class MenuItem
     @description = data[:description]
     @category_id = data[:category_id]
   end
-  
+
+
+  def menu_items
+    @database.all_menu_items.select {|item| item.category_id == self.id}
+  end
+
 end
