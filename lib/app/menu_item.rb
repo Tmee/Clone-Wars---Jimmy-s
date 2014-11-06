@@ -9,7 +9,7 @@ class MenuItem
     @id          = data[:id]
     @name        = data[:name]
     @price       = data[:price]
-    @description = data[:description]
+    @description = data[:description].gsub(/\n/, "")
     @category_id = data[:category_id]
   end
   
