@@ -40,9 +40,12 @@ class JimmysApp < Sinatra::Base
   end
 
   get '/item_description/:id' do |id|
-    menu_item     = DB.find_menu_item(id)
-    item_category = DB.find_item_category(id)
-    erb :item_description, locals: {menu_item: menu_item, item_category: item_category}
+    menu_item = []
+    menu_item  << DB.find_menu_item(id)
+    item_categories = DB.all_menu_categories
+    # require 'pry'
+    # binding.pry
+    erb :item_description, locals: {menu_item: menu_item, item_categories: item_categories}
   end
 
   # ========== Admin Areas ========== #
