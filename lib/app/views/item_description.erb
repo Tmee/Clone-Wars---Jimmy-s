@@ -3,15 +3,15 @@
     <h1>
       <%= item.name %>
       <span class="price_is_right"><%= item.price %></span>
-    </h1><br/>
+    </h1>
     <h4>
       <span class="menu-categories">
-
+        <% item_categories.each do |category| %>
+          <% if category.id == item.category_id %>
         <a href="http://lodojimmys.com/menu-category/specialty-sandwiches/" rel="tag">
-
-            <%=item.category_id%></a>
-
-
+            <%=category.title%>
+        <%end%></a>
+        <%end%>
       </span>
     </h4>
       <div class="post-content entry">
@@ -22,11 +22,9 @@
 
 
 
+
 <section class="single-menu-meta">
 
   <div class="menu-meta clearfix"><span>Gluten Free</span>No</div><div class="menu-meta clearfix"><span>Vegetarian</span>No</div><div class="menu-meta clearfix"><span>Vegan</span>No</div>
 </section>
 
-
-<!-- END #container -->
-</div>
