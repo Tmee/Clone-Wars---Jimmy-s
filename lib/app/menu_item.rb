@@ -12,19 +12,5 @@ class MenuItem
     @description = data[:description]
     @category_id = data[:category_id]
   end
-
-  def save
-    MenuDatabase.create(to_h)
-  end
-
-  def to_h
-  {
-    "name" => name,
-    "description" => description,
-    "price" => price,
-    "id" => id,
-    "category_id" => category_id
-  }
-  end
-
+  
 end
