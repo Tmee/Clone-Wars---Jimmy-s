@@ -1,59 +1,54 @@
-<div>
-  <h1>Menu Editor</h1><br/>
-    <div>
-      <h2>Menu Categories</h2><br/>
+<h1>Menu Editor</h1><br/>
+  <div>
+    <h2>Menu Categories</h2><br/>
       <ul>
         <li>
-          <p><% menu_categories.each do |item| %></p>
+          <% menu_categories.each do |item| %>
+            <h3><%=item.title%></h3>
 
-          <h3><%= item.title %></h3>
-
-          <form method="POST" action="/admin/<=% item.id %>">
-            <textarea class='textarea_short'><%= item.title %></textarea><br/>
+          <form action='/admin/<%=item.id%>' method="POST">
+            <textarea class='textarea_short' name='title'>
+              <%=item.title%>
+            </textarea><br/>
             <input type="hidden" name="_method" value="PUT"/>
-            <input type="submit" value='Save' class="edit_button"/>
+            <input type="submit" value='Save' />
           </form>
           <%end%>
         </li>
       </ul>
     </div>
-
-
   <div>
     <h2>Menu Items</h2><br/>
     <ul>
+      <% menu_items.each do |item| %>
       <li>
-        <p>
-         <% menu_items.each do |item| %>
-        </p>
+        <p><h3><%= item.name %></h3></p>
+          <form action='/admin/<%=item.id%>' method="POST"/>
 
-          <h3><%= item.name %></h3>
-            <form action='/admin/<%=item.id%>' method="POST"/>
+            <textarea class="textarea_short" name="name">
+              <%=item.name%>
+            </textarea>
+            <textarea class="textarea_price" name="price">
+              <%=item.price%>
+            </textarea><br/></span>
 
-              <textarea class="textarea_short" name="name">
-                <%=item.name%>
-              </textarea><br/>
-
-              <textarea class="textarea_short_and_tall" name="description">
-                <%=item.description%>
-              </textarea><br/>
-
+            <textarea class="textarea_short_and_tall" name="description">
+              <%=item.description%>
+            </textarea><br/>
+          <div style="width:400px;">
+            <div style="float: left; width: 130px">
               <input type="hidden" name="_method" value="PUT"/>
-              <input type="submit" value='Save' class="edit_button"/>
-            </form>
-
-            <form action='/admin/<%=item.id%>' method="POST">
-              <input type="hidden" name="_method" value="DELETE"/>
-              <input type="submit" value="DELETE" class="edit_button"/>
-            </form>
-          <%end%>
+              <input type="submit" value='Save'/>
+          </form>
+            </div>
+            <div style="float: right; width: 225px">
+              <form action='/admin/<%=item.id%>' method="POST">
+                <input type="hidden" name="_method" value="DELETE"/>
+                <input type="submit" value="DELETE" />
+              </form>
+            </div>
+          </div><br/><br/>
+        <%end%>
       </li>
     </ul>
   </div>
-</div>
-
-
-
-
-
-
