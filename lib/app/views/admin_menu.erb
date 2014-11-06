@@ -22,7 +22,7 @@
       <li>
         <p><h3><%= item.name %></h3></p>
           <form action='/admin/item/<%=item.id%>' method="POST"/>
-            <p>Name:</p><input name="name" value="<%=item.name%>" size=65/><br/><br/>
+            <p>Name:</p><input name="name" value="<%=item.name%>" size=65/> <br/><br/>
             <p>Price:</p><input name="price" value="<%=item.price%>" size=17/> <br/><br/>
             <p>Description:</p><textarea class="textarea_short_and_tall" name="description"><%=
               item.description%></textarea><br/>

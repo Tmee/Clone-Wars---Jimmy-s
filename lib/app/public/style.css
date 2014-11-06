@@ -667,6 +667,8 @@ input[type="submit"]{ box-shadow: 0 0 0; }
 #respond .right { float: left; width: 380px; }
 #respond label { color: #777; }
 
+#edit label { position: top; display: inline; display: inline-block; margin-top: 5px; }
+
 #commentform p, #respond p { margin: 0; }
 #commentform label, #respond label  { position: relative; display: inline; vertical-align: top; display: inline-block; margin-top: 5px; }
 #commentform label span.required, #respond label span.required { font-weight: bold; }
@@ -2440,5 +2442,3 @@ only screen and (min-resolution: 144dpi) {
 
 
 /*  ==============  New CSS  ==============  */
-
-
