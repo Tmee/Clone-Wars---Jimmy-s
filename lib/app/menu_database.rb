@@ -47,7 +47,7 @@ class MenuDatabase
 
   def update_menu_category(params)
     menu_categories.where(:id => params[:id])
-                   .update(:title => params[:title],
+                   .update(:name => params[:title],
                            :notes => params[:notes]
                           )
   end
