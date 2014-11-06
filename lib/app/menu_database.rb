@@ -44,8 +44,6 @@ class MenuDatabase
                                       :price => params[:price],
                                       :description => params[:description]
                                       )
-
-
   end
 
   def update_menu_category(params)
