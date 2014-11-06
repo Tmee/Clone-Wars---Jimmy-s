@@ -37,12 +37,13 @@ class MenuDatabase
     MenuCategory.new(category, self)
   end
 
+
   def update_menu_item(params)
-    menu_items.where(:id => params[:id])
-              .update(:name => params[:name],
-                      :price => params[:price],
-                      :description => params[:description]
-                      )
+    database.from(:menu_items).where(:id => params[:id])
+                              .update(:name => params[:name],
+                                      :price => params[:price],
+                                      :description => params[:description]
+                                      )
   end
 
   def update_menu_category(params)
