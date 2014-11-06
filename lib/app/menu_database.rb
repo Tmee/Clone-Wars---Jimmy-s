@@ -45,6 +45,10 @@ class MenuDatabase
                                            )
   end
 
+  def self.disconnect
+    database.disconnect
+  end
+
   def self.create(data)
     database.transaction do
       database['menu_items'] << data

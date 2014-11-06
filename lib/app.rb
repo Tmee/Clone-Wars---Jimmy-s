@@ -41,6 +41,10 @@ class JimmysApp < Sinatra::Base
     erb :item_description, locals: {menu_item: menu_item, item_category: item_category}
   end
 
+  after do
+    MenuDatabase.disconnect
+  end
+
   # ========== Admin Areas ========== #
 
   get '/admin' do
