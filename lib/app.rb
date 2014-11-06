@@ -22,8 +22,8 @@ class JimmysApp < Sinatra::Base
   end
 
   get '/menu' do
-    menu_categories = MenuDatabase.all_menu_categories
-    menu_items      = MenuDatabase.all_menu_items
+    menu_categories = DB.all_menu_categories
+    menu_items      = DB.all_menu_items
     erb :menu, locals: {menu_items: menu_items, menu_categories: menu_categories}, layout: :menu_layout
   end
 
@@ -36,8 +36,8 @@ class JimmysApp < Sinatra::Base
   end
 
   get '/item_description/:id' do |id|
-    menu_item     = MenuDatabase.find_menu_item(id)
-    item_category = MenuDatabase.find_item_category(id)
+    menu_item     = DB.find_menu_item(id)
+    item_category = DB.find_item_category(id)
     erb :item_description, locals: {menu_item: menu_item, item_category: item_category}
   end
 
@@ -57,8 +57,8 @@ class JimmysApp < Sinatra::Base
   end
 
   get '/admin/menu' do
-    menu_categories = MenuDatabase.all_menu_categories
-    menu_items      = MenuDatabase.all_menu_items
+    menu_categories = DB.all_menu_categories
+    menu_items      = DB.all_menu_items
     erb :admin_menu, locals: { menu_items: menu_items, menu_categories: menu_categories }, layout: :admin_layout
   end
 
@@ -81,12 +81,12 @@ class JimmysApp < Sinatra::Base
   #menu editing
 
   put '/admin/:id' do
-    MenuDatabase.update_menu_item(params)
+    DB.update_menu_item(params)
     redirect '/admin/menu'
   end
 
   delete '/admin/:id' do |id|
-    MenuDatabase.delete(id)
+    DB.delete(id)
     redirect '/admin/menu'
   end
 
@@ -100,33 +100,6 @@ class JimmysApp < Sinatra::Base
 
 
 # ======== End Admin ======== #
-
-  post '/contact_us' do
-    name = params[:name]
-    subject = params[:subject] || ""
-    email = params[:mail]
-    message = params[:message]
-
-
-    require 'pony'
-    Pony.mail({
-        :to => 'larsonkonr@gmail.com',
-        :from => email,
-        :subject => subject,
-        :body => name + " says " + message,
-        :via => :smtp,
-        :via_options => {
-         :address              => 'smtp.gmail.com',
-         :port                 => '587',
-         :enable_starttls_auto => true,
-         :user_name            => 'larsonkonr@gmail.com',
-         :password             => '9am380y1',
-         :authentication       => :plain,
-         :domain               => "http://lodojimmys.herokuapp.com/"
-         }
-      })
-      redirect '/'
-   end
 
   post '/jimmys-urban-bar-and-grill-reservations-denver' do
     resname = params[:resname]
