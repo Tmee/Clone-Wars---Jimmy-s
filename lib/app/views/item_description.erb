@@ -1,34 +1,28 @@
-
-  <header>
-
-    <% menu_item.each do |item| %>
-<span display: inline>
-    <h1><%= item.name %></h1>
-    <h1 class='price'><%= item.price %></h1><br/>
-</span>
-
-  </header>
-
+<% menu_item.each do |item| %>
+    <h1>
+      <%= item.name %>
+      <span class="price_is_right"><%= item.price %></span>
+    </h1><br/>
+    <h4>
+      <span class="menu-categories">
+        <% item_category.each do |category| %>
+        <a href="http://lodojimmys.com/menu-category/specialty-sandwiches/" rel="tag"><%= category.title %></a>
+        <%end%>
+      </span>
+    </h4>
       <div class="post-content entry">
         <p><%= item.description %></p>
       </div>
-
-  <% item_category.each do |category| %>
-      <h4><span class="menu-categories"><a href="http://lodojimmys.com/menu-category/specialty-sandwiches/" rel="tag"><%= category.name %></a></span></h4>
-
-  <%end%>
-  <%end%>
-
-
-  </aside>
+<%end%>
 
 
 
-  <section class="single-menu-meta">
 
-    <div class="menu-meta clearfix"><span>Gluten Free</span>No</div><div class="menu-meta clearfix"><span>Vegetarian</span>No</div><div class="menu-meta clearfix"><span>Vegan</span>No</div>
-  </section>
+<section class="single-menu-meta">
+
+  <div class="menu-meta clearfix"><span>Gluten Free</span>No</div><div class="menu-meta clearfix"><span>Vegetarian</span>No</div><div class="menu-meta clearfix"><span>Vegan</span>No</div>
+</section>
 
 
-  <!-- END #container -->
-  </div>
+<!-- END #container -->
+</div>

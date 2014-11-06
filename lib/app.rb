@@ -84,8 +84,13 @@ class JimmysApp < Sinatra::Base
 
   #menu editing
 
-  put '/admin/:id' do
+  put '/admin/item/:id' do
     DB.update_menu_item(params)
+    redirect '/admin/menu'
+  end
+
+  put '/admin/category/:id' do
+    DB.update_menu_category(params)
     redirect '/admin/menu'
   end
 

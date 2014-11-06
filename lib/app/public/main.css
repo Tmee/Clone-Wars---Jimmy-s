@@ -1,3 +1,8 @@
+div .button:hover, input[type="submit"]:hover, #submit:hover, #main .content #searchsubmit{
+background-color:#f1eb7c;
+}
+
+
 .table_fix {
   border: none;
   padding: none;
@@ -9,13 +14,22 @@
 }
 
 .textarea_short {
-  width: 255px;
+  width: 287px;
   height: 35px;
+}
+
+span {
+  display: inline;
+}
+
+.textarea_price {
+  width: 75px;
+  height: 67px;
 }
 
 .textarea_short_and_tall {
   width: 455px;
-  height: 55px;
+  height: 77px;
 }
 .textarea_big {
   width: 925px;
@@ -42,4 +56,22 @@
 .button {
   width: 240px;
   height: 20px;
+}
+
+.price_is_right {
+  float: right;
+  background: #eee;
+  padding: 5px 10px;
+  text-align: right;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.submit_button {
+  color: #fff;
+  width: 50px;
+  height: 22px;
+  padding: 0;
+  border: 0;
 }
